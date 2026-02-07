@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, ExternalLink, Menu, ChevronDown, HelpCircle, User } from 'lucide-react';
+import { Phone, MessageCircle, ExternalLink, Menu, ChevronDown, CircleHelp, User } from 'lucide-react';
 import GsgLogo from './GsgLogo';
 import { Button } from '@/components/ui/button';
 import {
@@ -143,7 +143,7 @@ export default function MainHeader() {
 
             <Link href="/customer-experience" className="cursor-pointer">
               <Button size="sm" className="gap-2 bg-primary hover:bg-primary/90 text-white">
-                <HelpCircle className="w-4 h-4" />
+                <CircleHelp className="w-4 h-4" />
                 Get Help
               </Button>
             </Link>
@@ -186,7 +186,7 @@ export default function MainHeader() {
                 <div className="border-t pt-6 mt-2">
                   <Link href="/customer-experience" className="cursor-pointer">
                     <Button className="w-full gap-2">
-                      <HelpCircle className="w-4 h-4" />
+                      <CircleHelp className="w-4 h-4" />
                       Get Help
                     </Button>
                   </Link>
