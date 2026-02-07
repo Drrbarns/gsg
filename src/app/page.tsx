@@ -112,7 +112,7 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-purple-900/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-purple-900/40 to-transparent"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 w-full">
           <motion.div
