@@ -7,7 +7,7 @@ import { ArrowRight, ShoppingBag, Users, Shield, Clock, MapPin, TrendingUp } fro
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import InfoBanner from '@/components/InfoBanner';
+
 
 const businessUnits = [
   {
@@ -102,8 +102,6 @@ const newsItems = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <InfoBanner />
-
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black">
         <div className="absolute inset-0 opacity-20">
           <Image

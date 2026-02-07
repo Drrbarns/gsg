@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, ExternalLink, Menu } from 'lucide-react';
+import { Phone, MessageCircle, ExternalLink, Menu, ChevronDown, HelpCircle, User } from 'lucide-react';
 import GsgLogo from './GsgLogo';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,15 +21,17 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
+const companyLinks = [
+  { name: 'About Us', href: '/about' },
   { name: 'GSG Brands', href: '/gsg-brands' },
+  { name: 'News & Media', href: '/news-media' },
+  { name: 'GSG-AID', href: '/gsg-aid' },
+];
+
+const supportLinks = [
   { name: 'Customer Experience', href: '/customer-experience' },
   { name: 'Ask GSG Brands', href: '/ask-gsg-brands' },
-  { name: 'News & Media', href: '/news-media' },
   { name: 'Tracking', href: '/tracking' },
-  { name: 'GSG-AID', href: '/gsg-aid' },
 ];
 
 const socialLinks = [
@@ -52,58 +54,77 @@ export default function MainHeader() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isActive = (path: string) => pathname === path;
+
   return (
     <motion.header
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-white py-4'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
           <Link href="/" className="cursor-pointer">
             <GsgLogo />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="cursor-pointer">
-                <motion.div
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
-                    pathname === link.href
-                      ? 'bg-primary text-white'
-                      : 'text-gray-700 hover:bg-purple-50 hover:text-primary'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {link.name}
-                </motion.div>
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="tel:+233246033792"
-              className="cursor-pointer"
-            >
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Phone className="w-4 h-4" />
-                Call/WhatsApp
-              </Button>
-            </a>
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link href="/" className="cursor-pointer">
+              <span className={`text-sm font-medium hover:text-primary transition-colors ${isActive('/') ? 'text-primary' : 'text-gray-700'}`}>
+                Home
+              </span>
+            </Link>
 
             <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition-colors outline-none cursor-pointer">
+                Company <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {companyLinks.map((link) => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} className="w-full cursor-pointer">
+                      {link.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition-colors outline-none cursor-pointer">
+                Support <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {supportLinks.map((link) => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} className="w-full cursor-pointer">
+                      {link.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-3">
+            <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-2 cursor-pointer">
-                  <ExternalLink className="w-4 h-4" />
-                  Visit/Follow
+                <Button variant="ghost" size="icon" className="cursor-pointer" title="Socials & Contact">
+                   <Phone className="w-5 h-5 text-gray-700" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                   <a href="tel:+233246033792" className="flex items-center gap-2 cursor-pointer">
+                     <Phone className="w-4 h-4" /> Call Support
+                   </a>
+                </DropdownMenuItem>
                 {socialLinks.map((social) => (
                   <DropdownMenuItem key={social.name} asChild>
                     <a
@@ -121,10 +142,14 @@ export default function MainHeader() {
             </DropdownMenu>
 
             <Link href="/customer-experience" className="cursor-pointer">
-              <Button size="sm">Get Help</Button>
+              <Button size="sm" className="gap-2 bg-primary hover:bg-primary/90 text-white">
+                <HelpCircle className="w-4 h-4" />
+                Get Help
+              </Button>
             </Link>
           </div>
 
+          {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden cursor-pointer">
@@ -133,28 +158,40 @@ export default function MainHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
               <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
+                <SheetTitle className="text-left">Menu</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="cursor-pointer">
-                    <div
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-                        pathname === link.href
-                          ? 'bg-primary text-white'
-                          : 'text-gray-700 hover:bg-purple-50'
-                      }`}
-                    >
+              <div className="flex flex-col gap-6 mt-8">
+                <Link href="/" className="text-lg font-medium hover:text-primary cursor-pointer">
+                  Home
+                </Link>
+                
+                <div className="flex flex-col gap-3">
+                  <h4 className="text-sm font-semibold text-gray-500 uppercase">Company</h4>
+                  {companyLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="pl-4 text-base hover:text-primary cursor-pointer">
                       {link.name}
-                    </div>
-                  </Link>
-                ))}
-                <div className="border-t pt-4 mt-4">
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <h4 className="text-sm font-semibold text-gray-500 uppercase">Support</h4>
+                  {supportLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="pl-4 text-base hover:text-primary cursor-pointer">
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="border-t pt-6 mt-2">
                   <Link href="/customer-experience" className="cursor-pointer">
-                    <Button className="w-full">Get Help</Button>
+                    <Button className="w-full gap-2">
+                      <HelpCircle className="w-4 h-4" />
+                      Get Help
+                    </Button>
                   </Link>
                 </div>
-              </nav>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
