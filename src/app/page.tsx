@@ -114,31 +114,31 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-purple-900/60 to-transparent"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 text-sm sm:text-base">
               Time & Money Saver For Value
             </Badge>
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Your Trusted Partner for Everyday Needs
             </h1>
-            <p className="text-xl text-purple-100 mb-10 leading-relaxed">
+            <p className="text-base sm:text-xl text-purple-100 mb-8 sm:mb-10 leading-relaxed">
               GSG Brands brings together convenience goods, personal shopping, secure marketplace, cuisine delivery, and courier services—all designed to save you time and money while delivering exceptional value.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/gsg-brands" className="cursor-pointer">
-                <Button size="lg" className="gap-2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/gsg-brands" className="cursor-pointer w-full sm:w-auto">
+                <Button size="lg" className="gap-2 w-full sm:w-auto">
                   Explore GSG Brands
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Link href="/customer-experience" className="cursor-pointer">
-                <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white/20">
+              <Link href="/customer-experience" className="cursor-pointer w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white/20 w-full sm:w-auto">
                   Customer Experience
                 </Button>
               </Link>
