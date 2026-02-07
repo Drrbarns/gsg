@@ -110,12 +110,12 @@ export default function Footer() {
           <p className="text-purple-300 text-sm">
             © {new Date().getFullYear()} GSG Brands. All rights reserved. |{' '}
             <a
-              href="https://readdy.ai/?ref=logo"
+              href="https://doctorbarns.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-purple-200 hover:text-white transition-colors cursor-pointer"
             >
-              Powered by Readdy
+              Powered By Doctor Barns Tech
             </a>
           </p>
         </div>
