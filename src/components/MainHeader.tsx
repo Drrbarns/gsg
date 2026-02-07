@@ -21,9 +21,12 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-const companyLinks = [
+const topLevelLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'GSG Brands', href: '/gsg-brands' },
+];
+
+const companyLinks = [
   { name: 'News & Media', href: '/news-media' },
   { name: 'GSG-AID', href: '/gsg-aid' },
 ];
@@ -79,6 +82,14 @@ export default function MainHeader() {
                 Home
               </span>
             </Link>
+
+            {topLevelLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="cursor-pointer">
+                <span className={`text-sm font-medium hover:text-primary transition-colors ${isActive(link.href) ? 'text-primary' : 'text-gray-700'}`}>
+                  {link.name}
+                </span>
+              </Link>
+            ))}
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition-colors outline-none cursor-pointer">
@@ -164,6 +175,12 @@ export default function MainHeader() {
                 <Link href="/" className="text-lg font-medium hover:text-primary cursor-pointer">
                   Home
                 </Link>
+
+                {topLevelLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="text-lg font-medium hover:text-primary cursor-pointer">
+                    {link.name}
+                  </Link>
+                ))}
                 
                 <div className="flex flex-col gap-3">
                   <h4 className="text-sm font-semibold text-gray-500 uppercase">Company</h4>
