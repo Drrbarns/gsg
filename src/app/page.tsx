@@ -3,101 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ShoppingBag, Users, Shield, Clock, MapPin, TrendingUp } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
-
-const businessUnits = [
-  {
-    title: 'Convenience Goods',
-    description: 'Shop everyday essentials with ease and convenience',
-    icon: ShoppingBag,
-    url: 'https://goods.gsgbrands.com.gh',
-    active: true,
-  },
-  {
-    title: 'My Personal Shopper',
-    description: 'Your dedicated shopping assistant for personalized service',
-    icon: Users,
-    url: 'https://shopper.gsgbrands.com.gh',
-    active: true,
-  },
-  {
-    title: 'Sell-Safe Buy-Safe Marketplace',
-    description: 'Secure platform for buying and selling with confidence',
-    icon: Shield,
-    url: 'https://sellbuysafe.gsg-brands.com',
-    active: true,
-  },
-  {
-    title: 'StreetCuisine By GSG',
-    description: 'Authentic local cuisine delivered to your doorstep',
-    icon: ShoppingBag,
-    url: '#',
-    active: false,
-  },
-  {
-    title: 'Courier & Delivery By GSG',
-    description: 'Fast and reliable delivery services across Ghana',
-    icon: MapPin,
-    url: '#',
-    active: false,
-  },
-  {
-    title: 'Affiliates',
-    description: 'Join our partner network and grow together',
-    icon: TrendingUp,
-    url: '#',
-    active: false,
-    comingSoon: true,
-  },
-];
-
-const features = [
-  {
-    title: 'Trust & Security',
-    description: 'Verified services and secure transactions for peace of mind',
-    icon: Shield,
-  },
-  {
-    title: 'Speed & Efficiency',
-    description: 'Quick delivery and responsive service when you need it',
-    icon: Clock,
-  },
-  {
-    title: 'Value for Money',
-    description: 'Competitive pricing and quality products that save you money',
-    icon: TrendingUp,
-  },
-  {
-    title: 'Customer Care',
-    description: '24/7 support through WhatsApp, Telegram, and phone',
-    icon: Users,
-  },
-];
-
-const newsItems = [
-  {
-    title: 'GSG Brands Expands Service Coverage',
-    category: 'Announcements',
-    date: '2024-01-15',
-    excerpt: 'We are excited to announce expanded coverage across more regions in Ghana.',
-  },
-  {
-    title: 'New Partnership with Local Vendors',
-    category: 'Updates',
-    date: '2024-01-10',
-    excerpt: 'Strengthening our marketplace with trusted local businesses.',
-  },
-  {
-    title: 'Customer Satisfaction Reaches 98%',
-    category: 'Press',
-    date: '2024-01-05',
-    excerpt: 'Our commitment to excellence continues to deliver results.',
-  },
-];
+import { businessUnits, features, newsArticles } from '@/lib/data';
 
 export default function Home() {
   return (
@@ -178,17 +88,15 @@ export default function Home() {
                     </div>
                     <CardTitle className="flex items-center gap-2">
                       {unit.title}
-                      {unit.comingSoon && (
-                        <Badge variant="secondary" className="text-xs">
-                          Coming Soon
-                        </Badge>
+                      {unit.active && unit.comingSoon && (
+                        <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
                       )}
                     </CardTitle>
                     <CardDescription>{unit.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     {unit.active ? (
-                      <a href={unit.url} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      <a href={unit.url} target={unit.url.startsWith('http') ? "_blank" : "_self"} rel={unit.url.startsWith('http') ? "noopener noreferrer" : ""} className="cursor-pointer">
                         <Button className="w-full gap-2">
                           Visit Service
                           <ArrowRight className="w-4 h-4" />
@@ -262,7 +170,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {newsItems.map((item, index) => (
+            {newsArticles.slice(0, 3).map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -270,16 +178,23 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-all">
+                <Card className="h-full hover:shadow-lg transition-all group overflow-hidden">
+                  <div className="h-48 overflow-hidden relative">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                   <CardHeader>
                     <Badge className="w-fit mb-2">{item.category}</Badge>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                    <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
                     <CardDescription className="text-xs">{item.date}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">{item.excerpt}</p>
-                    <Link href="/news-media" className="cursor-pointer">
-                      <Button variant="ghost" size="sm" className="gap-2">
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{item.excerpt}</p>
+                    <Link href={`/news-media/${item.slug}`} className="cursor-pointer">
+                      <Button variant="ghost" size="sm" className="gap-2 p-0">
                         Read More
                         <ArrowRight className="w-4 h-4" />
                       </Button>

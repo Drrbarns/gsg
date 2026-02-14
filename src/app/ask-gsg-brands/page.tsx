@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     question: 'How can I become an affiliate partner?',
-    answer: 'Our Affiliates program is coming soon! You will be able to join our partner network and earn commissions by promoting GSG Brands services. Stay tuned to our News & Media section for updates on the launch.',
+    answer: 'Our Affiliates program is live! Visit our Affiliates page to join our partner network and start earning commissions by promoting GSG Brands services.',
   },
 ];
 

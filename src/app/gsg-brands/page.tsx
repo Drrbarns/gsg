@@ -7,71 +7,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-const businessUnits = [
-  {
-    title: 'Convenience Goods',
-    description: 'Your one-stop shop for everyday essentials, groceries, household items, and personal care products. We bring quality products to your doorstep with fast delivery and competitive pricing.',
-    icon: ShoppingBag,
-    url: 'https://goods.gsgbrands.com.gh',
-    active: true,
-    category: 'Shopping',
-    features: ['Fast Delivery', 'Quality Products', 'Competitive Prices', 'Wide Selection'],
-  },
-  {
-    title: 'My Personal Shopper',
-    description: 'Experience personalized shopping assistance with our dedicated team. We help you find exactly what you need, compare prices, and make informed purchasing decisions.',
-    icon: Users,
-    url: 'https://shopper.gsgbrands.com.gh',
-    active: true,
-    category: 'Services',
-    features: ['Personal Assistant', 'Price Comparison', 'Expert Advice', 'Time Saving'],
-  },
-  {
-    title: 'Sell-Safe Buy-Safe Marketplace',
-    description: 'A secure platform connecting buyers and sellers across Ghana. Trade with confidence knowing every transaction is protected by our verification and security measures.',
-    icon: Shield,
-    url: 'https://sellbuysafe.gsg-brands.com',
-    active: true,
-    category: 'Marketplace',
-    features: ['Verified Sellers', 'Secure Payments', 'Buyer Protection', 'Wide Categories'],
-  },
-  {
-    title: 'StreetCuisine By GSG',
-    description: 'Discover authentic Ghanaian street food and local delicacies delivered fresh to your location. Supporting local food vendors while ensuring quality and hygiene standards.',
-    icon: ShoppingBag,
-    url: '#',
-    active: false,
-    category: 'Food',
-    features: ['Local Cuisine', 'Fresh Delivery', 'Verified Vendors', 'Hygiene Standards'],
-  },
-  {
-    title: 'Courier & Delivery By GSG',
-    description: 'Reliable courier and delivery services across Ghana. From documents to packages, we ensure your items reach their destination safely and on time.',
-    icon: MapPin,
-    url: '#',
-    active: false,
-    category: 'Logistics',
-    features: ['Fast Delivery', 'Package Tracking', 'Nationwide Coverage', 'Secure Handling'],
-  },
-  {
-    title: 'Affiliates',
-    description: 'Join our growing network of partners and affiliates. Earn commissions by promoting GSG Brands services and help us expand our reach across Ghana.',
-    icon: TrendingUp,
-    url: '#',
-    active: false,
-    comingSoon: true,
-    category: 'Partnership',
-    features: ['Commission Earnings', 'Marketing Support', 'Growth Opportunities', 'Partner Network'],
-  },
-];
+import { businessUnits } from '@/lib/data';
 
 const categories = ['All', 'Shopping', 'Services', 'Marketplace', 'Food', 'Logistics', 'Partnership'];
 
 export default function GsgBrandsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredUnits = selectedCategory === 'All' 
-    ? businessUnits 
+  const filteredUnits = selectedCategory === 'All'
+    ? businessUnits
     : businessUnits.filter(unit => unit.category === selectedCategory);
 
   return (
