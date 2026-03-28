@@ -64,7 +64,7 @@ export default function CookiesPage() {
 
             <h2 className="text-3xl font-bold mb-4 mt-12">Contact Us</h2>
             <p className="text-gray-700 leading-relaxed">
-              If you have any questions about our use of cookies, please contact us at info@gsgbrands.com.
+              If you have any questions about our use of cookies, please contact us at info@gsgbrands.com.gh.
             </p>
           </motion.div>
         </div>

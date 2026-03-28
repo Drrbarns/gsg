@@ -13,11 +13,11 @@ import { useToast } from '@/components/ui/use-toast';
 const faqs = [
   {
     question: 'What services does GSG Brands offer?',
-    answer: 'GSG Brands offers a comprehensive ecosystem of services including Convenience Goods shopping, My Personal Shopper assistance, Sell-Safe Buy-Safe Marketplace, StreetCuisine food delivery, Courier & Delivery services, and an Affiliates program. Each service is designed to save you time and money while delivering exceptional value.',
+    answer: 'GSG Brands offers a comprehensive ecosystem of services including Convenience Goods & More shopping, Personal Shopper assistance, Sell-Safe Buy-Safe Marketplace, StreetCuisine food delivery, Courier services, and an Affiliates program. Each service is designed to save you time and money while delivering exceptional value.',
   },
   {
     question: 'How can I contact customer support?',
-    answer: 'You can reach our customer support team 24/7 through multiple channels: Call us at +233 (0) 246 033 792 or +233 (0) 579 033 792, message us on WhatsApp, connect via Telegram @gsgbrandsgh, or email us at info@gsgbrands.com. We are always ready to assist you.',
+    answer: 'You can reach our customer support team 24/7 through multiple channels: Call us at +233 (0) 246 033 792 or +233 (0) 579 033 792, message us on WhatsApp, connect via Telegram @gsgbrandsgh, or email us at info@gsgbrands.com.gh. We are always ready to assist you.',
   },
   {
     question: 'What are your delivery areas?',
@@ -32,7 +32,7 @@ const faqs = [
     answer: 'We accept various payment methods including mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash on delivery for eligible orders. Payment options may vary depending on the specific service you are using.',
   },
   {
-    question: 'How does the Personal Shopper service work?',
+    question: 'How does the Personal-Shopping service work?',
     answer: 'Our Personal Shopper service connects you with a dedicated shopping assistant who helps you find products, compare prices, and make informed purchasing decisions. Simply submit your shopping list or requirements, and our team will handle the rest.',
   },
   {

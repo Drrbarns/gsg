@@ -78,7 +78,7 @@ export default function TermsPage() {
 
             <h2 className="text-3xl font-bold mb-4 mt-12">Contact Information</h2>
             <p className="text-gray-700 leading-relaxed">
-              For questions about these terms, please contact us at info@gsgbrands.com or call +233 (0) 246 033 792.
+              For questions about these terms, please contact us at info@gsgbrands.com.gh or call +233 (0) 246 033 792.
             </p>
           </motion.div>
         </div>

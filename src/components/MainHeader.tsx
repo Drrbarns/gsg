@@ -38,7 +38,7 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { name: 'WhatsApp Channel', url: 'https://whatsapp.com/channel/0029VbBYwi3D', icon: MessageCircle },
+  { name: 'WhatsApp', url: 'https://whatsapp.com/channel/0029VbBYwi3D', icon: MessageCircle },
   { name: 'Telegram', url: 'https://t.me/gsgbrandsgh', icon: MessageCircle },
   { name: 'X (Twitter)', url: 'https://x.com/gsgbrandsgh', icon: ExternalLink },
   { name: 'Instagram', url: 'https://ig.me/m/gsgbrandsgh', icon: ExternalLink },

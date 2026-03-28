@@ -38,7 +38,7 @@ export default function Home() {
               Your Trusted Partner for Everyday Needs
             </h1>
             <p className="text-base sm:text-xl text-purple-100 mb-8 sm:mb-10 leading-relaxed">
-              GSG Brands brings together convenience goods, personal shopping, secure marketplace, cuisine delivery, and courier services—all designed to save you time and money while delivering exceptional value.
+              GSG Brands brings together Convenience Goods & More, personal shopping, secure marketplace, cuisine delivery, and courier services—all designed to save you time and money while delivering exceptional value.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/gsg-brands" className="cursor-pointer w-full sm:w-auto">

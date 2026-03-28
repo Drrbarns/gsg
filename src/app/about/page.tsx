@@ -5,11 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Users, Target, Lightbulb, Rocket, Heart } from 'lucide-react';
 
 const teamMembers = [
-  { name: 'TurkArthur', role: 'Advisory Board', image: 'https://readdy.ai/api/search-image?query=african%20business%20leader%20executive%20portrait%20professional%20male%20suit%20confident%20smile%20studio%20lighting&width=400&height=400&seq=team-1&orientation=square' },
-  { name: 'Kenneth', role: 'Executive Team', image: 'https://readdy.ai/api/search-image?query=young%20african%20corporate%20professional%20male%20smart%20casual%20innovative%20tech%20leader%20portrait&width=400&height=400&seq=team-2&orientation=square' },
-  { name: 'Derick', role: 'Executive Team', image: 'https://readdy.ai/api/search-image?query=creative%20african%20business%20professional%20male%20modern%20style%20portrait%20visionary&width=400&height=400&seq=team-3&orientation=square' },
-  { name: 'Reynold', role: 'Executive Team', image: 'https://readdy.ai/api/search-image?query=dedicated%20african%20operations%20manager%20male%20professional%20reliable%20portrait&width=400&height=400&seq=team-4&orientation=square' },
-  { name: 'Berlinda', role: 'Executive Team', image: 'https://readdy.ai/api/search-image?query=african%20business%20woman%20executive%20professional%20confident%20leadership%20portrait%20modern&width=400&height=400&seq=team-5&orientation=square' },
+  { name: 'Derick', image: 'https://readdy.ai/api/search-image?query=creative%20african%20business%20professional%20male%20modern%20style%20portrait%20visionary&width=400&height=400&seq=team-3&orientation=square' },
+  { name: 'Reynold', image: 'https://readdy.ai/api/search-image?query=dedicated%20african%20operations%20manager%20male%20professional%20reliable%20portrait&width=400&height=400&seq=team-4&orientation=square' },
+  { name: 'Berlinda', image: 'https://readdy.ai/api/search-image?query=african%20business%20woman%20executive%20professional%20confident%20leadership%20portrait%20modern&width=400&height=400&seq=team-5&orientation=square' },
+  { name: 'TurkArthur', image: 'https://readdy.ai/api/search-image?query=african%20business%20leader%20executive%20portrait%20professional%20male%20suit%20confident%20smile%20studio%20lighting&width=400&height=400&seq=team-1&orientation=square' },
+  { name: 'Kennet', image: 'https://readdy.ai/api/search-image?query=young%20african%20corporate%20professional%20male%20smart%20casual%20innovative%20tech%20leader%20portrait&width=400&height=400&seq=team-2&orientation=square' },
 ];
 
 export default function AboutPage() {
@@ -113,7 +113,7 @@ export default function AboutPage() {
             className="mb-12"
           >
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Meet Our Leadership</h2>
+              <h2 className="text-4xl font-bold mb-4">Advisory & Executive Team</h2>
               <p className="text-lg text-gray-600">The minds driving GSG Brands forward</p>
             </div>
 
@@ -138,7 +138,6 @@ export default function AboutPage() {
                     </div>
                     <div className="p-6 text-center">
                       <h3 className="text-2xl font-bold mb-1 text-gray-900">{member.name}</h3>
-                      <p className="text-purple-600 font-medium">{member.role}</p>
                     </div>
                   </div>
                 </motion.div>

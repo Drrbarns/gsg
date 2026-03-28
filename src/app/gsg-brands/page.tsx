@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 import { businessUnits } from '@/lib/data';
 
-const categories = ['All', 'Shopping', 'Services', 'Marketplace', 'Food', 'Logistics', 'Partnership'];
+const categories = ['All', 'E-commerce', 'Personal-Shopping', 'Marketplace', 'Food', 'Logistics', 'Partnership'];
 
 export default function GsgBrandsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');

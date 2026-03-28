@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 const services = [
-  { name: 'Convenience Goods', url: 'https://goods.gsgbrands.com.gh', active: true },
+  { name: 'Convenience Goods & More', url: 'https://goods.gsgbrands.com.gh', active: true },
   { name: 'Personal Shopper', url: 'https://shopper.gsgbrands.com.gh', active: true },
-  { name: 'Sell-Safe Buy-Safe', url: 'https://sellbuysafe.gsg-brands.com', active: true },
-  { name: 'StreetCuisine', url: '#', active: false },
-  { name: 'Courier', url: '#', active: false },
-  { name: 'Affiliates', url: '#', active: false, comingSoon: true },
+  { name: 'Sell-Safe Buy-Safe', url: 'https://sellbuysafe.gsgbrands.com.gh', active: true },
+  { name: 'StreetCuisine', url: 'https://cuisine.gsgbrands.com.gh', active: true },
+  { name: 'Courier', url: 'https://courier.gsgbrands.com.gh', active: true },
+  { name: 'Affiliates', url: '/affiliates', active: true },
 ];
 
 export default function ServiceBar() {
@@ -25,7 +25,7 @@ export default function ServiceBar() {
           <div className="hidden md:flex items-center gap-4 opacity-80">
             <span>GSG Brands Business Units</span>
           </div>
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar justify-end w-full md:w-auto">
+          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar justify-start md:justify-end w-full md:w-auto">
             {services.map((service, index) => (
               <div key={service.name} className="whitespace-nowrap flex-shrink-0">
                 {service.active ? (

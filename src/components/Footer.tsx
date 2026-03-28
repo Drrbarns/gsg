@@ -34,7 +34,10 @@ export default function Footer() {
           >
             <GsgLogo className="mb-4" />
             <p className="text-purple-200 text-sm mb-4">Time & Money Saver For Value</p>
-            <p className="text-purple-300 text-sm">@gsgbrandsgh</p>
+            <p className="text-purple-300 text-sm flex items-center gap-2">
+              <i className="ri-instagram-line text-base" aria-hidden="true"></i>
+              @gsgbrandsgh
+            </p>
           </motion.div>
 
           <motion.div

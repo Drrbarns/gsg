@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Send, Mail, Clock } from 'lucide-react';
+import { MessageCircle, Send, Mail, Clock } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,11 +12,14 @@ import InfoBanner from '@/components/InfoBanner';
 
 const contactMethods = [
   {
-    title: 'Call Us',
-    icon: Phone,
+    title: 'Websites',
+    icon: MessageCircle,
     items: [
-      { label: 'Primary', value: '+233 (0) 246 033 792', link: 'tel:+233246033792' },
-      { label: 'Secondary', value: '+233 (0) 579 033 792', link: 'tel:+233579033792' },
+      { label: 'Goods', value: 'www.goods.gsgbrands.com.gh', link: 'https://goods.gsgbrands.com.gh' },
+      { label: 'Shopper', value: 'www.shopper.gsgbrands.com.gh', link: 'https://shopper.gsgbrands.com.gh' },
+      { label: 'Sell-Buy-Safe', value: 'www.sellbuysafe.gsgbrands.com.gh', link: 'https://sellbuysafe.gsgbrands.com.gh' },
+      { label: 'Courier', value: 'www.courier.gsgbrands.com.gh', link: 'https://courier.gsgbrands.com.gh' },
+      { label: 'Cuisine', value: 'www.cuisine.gsgbrands.com.gh', link: 'https://cuisine.gsgbrands.com.gh' },
     ],
   },
   {
@@ -38,7 +41,7 @@ const contactMethods = [
     title: 'Email',
     icon: Mail,
     items: [
-      { label: 'General Inquiries', value: 'info@gsgbrands.com', link: 'mailto:info@gsgbrands.com' },
+      { label: 'General Inquiries', value: 'info@gsgbrands.com.gh', link: 'mailto:info@gsgbrands.com.gh' },
     ],
   },
 ];
@@ -46,17 +49,18 @@ const contactMethods = [
 const supportHours = [
   {
     title: 'Regular Hours',
+    phones: ['+233 (0) 246 033 792', '+233 (0) 579 033 792'],
     schedule: [
-      { days: 'Monday - Friday', hours: '06:00 - 15:00' },
-      { days: 'Saturday & Holidays', hours: '06:00 - 10:00' },
+      { days: 'Monday - Friday', hours: '05:00am - 02:00pm' },
+      { days: 'Sat. & Holidays', hours: '05:00am - 09:00am' },
     ],
   },
   {
     title: 'Extended Hours',
     phone: '+233 (0) 571 303 716',
     schedule: [
-      { days: 'Monday - Friday', hours: '15:01 - 18:30' },
-      { days: 'Saturday & Holidays', hours: '10:01 - 16:30' },
+      { days: 'Monday - Friday', hours: '02:01pm - 06:00pm' },
+      { days: 'Sat. & Holidays', hours: '09:01am - 02:00pm' },
     ],
   },
 ];
@@ -146,7 +150,7 @@ export default function CustomerExperiencePage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-center mb-12">Support Hours</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Live Calls Support Hours</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {supportHours.map((block, index) => (
                 <Card key={block.title} className="border-2">
@@ -157,11 +161,16 @@ export default function CustomerExperiencePage() {
                       </div>
                       <CardTitle className="text-2xl">{block.title}</CardTitle>
                     </div>
-                    {block.phone && (
-                      <CardDescription className="text-base font-medium text-primary">
-                        {block.phone}
-                      </CardDescription>
+                    {block.phones && block.phones.length > 0 && (
+                      <div className="space-y-1">
+                        {block.phones.map((phone) => (
+                          <CardDescription key={phone} className="text-base font-medium text-primary">
+                            {phone}
+                          </CardDescription>
+                        ))}
+                      </div>
                     )}
+                    {block.phone && <CardDescription className="text-base font-medium text-primary">{block.phone}</CardDescription>}
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
