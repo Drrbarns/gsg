@@ -77,7 +77,7 @@ export const newsArticles = [
       </ul>
       <p>We are committed to continuing this growth and bringing GSG Brands to every corner of the country.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=modern%20african%20business%20expansion%20map%20ghana%20regions%20network%20growth%20professional%20corporate%20photography%20vibrant%20colors%20optimistic%20atmosphere%20business%20development%20success%20story&width=1200&height=600&seq=news-001&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1200&auto=format&fit=crop',
     },
     {
         slug: 'new-partnership-local-vendors',
@@ -92,7 +92,7 @@ export const newsArticles = [
       <h2>Quality Assurance</h2>
       <p>All new vendors undergo a rigorous verification process to ensure they meet our quality and service standards. This guarantees that our customers can shop with confidence.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=african%20marketplace%20vendors%20partnership%20handshake%20business%20collaboration%20local%20entrepreneurs%20ghana%20commerce%20community%20professional%20photography%20warm%20lighting%20authentic&width=1200&height=600&seq=news-002&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32b7?q=80&w=1200&auto=format&fit=crop',
     },
     {
         slug: 'customer-satisfaction-reaches-98-percent',
@@ -107,7 +107,7 @@ export const newsArticles = [
       <h2>Listening to Our Customers</h2>
       <p>We actively listen to customer feedback and use it to drive our decision-making process. Thank you to all our customers for their trust and support.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=happy%20satisfied%20african%20customers%20smiling%20positive%20feedback%20testimonials%20customer%20service%20excellence%20ghana%20professional%20photography%20bright%20cheerful%20atmosphere%20success%20celebration&width=1200&height=600&seq=news-003&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1200&auto=format&fit=crop',
     },
     {
         slug: 'how-to-use-personal-shopper-service',
@@ -124,7 +124,7 @@ export const newsArticles = [
       <h2>3. Enjoy the Convenience</h2>
       <p>Sit back and relax while we handle the sourcing, purchasing, and delivery of your items.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=personal%20shopping%20assistant%20helping%20customer%20african%20woman%20professional%20service%20guidance%20shopping%20bags%20retail%20experience%20ghana%20modern%20lifestyle%20convenience&width=1200&height=600&seq=news-004&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=1200&auto=format&fit=crop',
     },
     {
         slug: 'streetcuisine-launch-announcement',
@@ -139,7 +139,7 @@ export const newsArticles = [
       <h2>Hygiene First</h2>
       <p>All our vendor partners undergo strict hygiene training and inspections to ensure your food is safe and delicious.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=delicious%20ghanaian%20street%20food%20local%20cuisine%20authentic%20dishes%20colorful%20presentation%20traditional%20african%20food%20culture%20appetizing%20fresh%20ingredients%20culinary%20heritage&width=1200&height=600&seq=news-005&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop',
     },
     {
         slug: 'secure-shopping-tips',
@@ -156,7 +156,7 @@ export const newsArticles = [
       <h2>3. Protect Your Date</h2>
       <p>Never share your password or financial information over email or social media.</p>
     `,
-        image: 'https://readdy.ai/api/search-image?query=online%20shopping%20security%20digital%20safety%20african%20person%20using%20smartphone%20secure%20payment%20protection%20technology%20ghana%20modern%20lifestyle%20cybersecurity%20awareness%20professional&width=1200&height=600&seq=news-006&orientation=landscape',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop',
     },
 ];
 

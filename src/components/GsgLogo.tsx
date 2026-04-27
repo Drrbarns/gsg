@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-export default function GsgLogo({ className = '' }: { className?: string }) {
+export default function GsgLogo({ className = '', light = false }: { className?: string, light?: boolean }) {
   return (
     <motion.div
       className={`flex items-center gap-2 ${className}`}
@@ -17,7 +17,7 @@ export default function GsgLogo({ className = '' }: { className?: string }) {
           <span className="text-white font-bold text-xl tracking-wider">GSG</span>
         </div>
       </div>
-      <span className="text-xl font-bold text-foreground">BRANDS</span>
+      <span className={`text-xl font-bold ${light ? 'text-white' : 'text-foreground'}`}>BRANDS</span>
     </motion.div>
   );
 }

@@ -16,7 +16,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black">
         <div className="absolute inset-0 opacity-50">
           <Image
-            src="https://readdy.ai/api/search-image?query=modern%20african%20marketplace%20vibrant%20shopping%20scene%20with%20diverse%20people%20colorful%20products%20fresh%20goods%20urban%20ghana%20setting%20professional%20commercial%20photography%20warm%20natural%20lighting%20contemporary%20retail%20environment%20bustling%20activity%20community%20commerce%20lifestyle&width=1920&height=1080&seq=gsg-hero-bg-001&orientation=landscape"
+            src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1920&auto=format&fit=crop"
             alt="GSG Brands Hero"
             fill
             className="object-cover"
@@ -81,30 +81,31 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group h-full"
               >
-                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
-                  <CardHeader>
-                    <div className="w-14 h-14 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl mb-4">
-                      <unit.icon className="w-7 h-7 text-white" />
+                <Card className="h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-200 bg-white shadow-sm overflow-hidden flex flex-col">
+                  <CardHeader className="flex-1 pb-4">
+                    <div className="w-14 h-14 flex items-center justify-center bg-purple-100 text-purple-700 rounded-2xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                      <unit.icon className="w-7 h-7" />
                     </div>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-xl font-bold">
                       {unit.title}
                       {unit.active && unit.comingSoon && (
-                        <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                        <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-100">Coming Soon</Badge>
                       )}
                     </CardTitle>
-                    <CardDescription>{unit.description}</CardDescription>
+                    <CardDescription className="text-base text-gray-600 leading-relaxed mt-2 line-clamp-5">{unit.description}</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="mt-auto pt-4">
                     {unit.active ? (
-                      <a href={unit.url} target={unit.url.startsWith('http') ? "_blank" : "_self"} rel={unit.url.startsWith('http') ? "noopener noreferrer" : ""} className="cursor-pointer">
-                        <Button className="w-full gap-2">
+                      <a href={unit.url} target={unit.url.startsWith('http') ? "_blank" : "_self"} rel={unit.url.startsWith('http') ? "noopener noreferrer" : ""} className="cursor-pointer block">
+                        <Button className="w-full gap-2 bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white transition-colors duration-300">
                           Visit Service
-                          <ArrowRight className="w-4 h-4" />
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </a>
                     ) : (
-                      <Button className="w-full" disabled>
+                      <Button className="w-full bg-gray-50 text-gray-400 border-0" disabled>
                         Coming Soon
                       </Button>
                     )}
@@ -116,7 +117,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-purple-50 to-white">
+      <section className="py-24 bg-gradient-to-b from-gray-50/50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,24 +132,21 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group text-center"
               >
-                <Card className="text-center h-full hover:shadow-lg transition-all">
-                  <CardHeader>
-                    <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 rounded-full mx-auto mb-4">
-                      <feature.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
-                    <CardDescription>{feature.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <div className="w-16 h-16 flex items-center justify-center bg-purple-50 text-purple-600 rounded-2xl mx-auto mb-6 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-200">
+                  <feature.icon className="w-8 h-8 transition-colors duration-300" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -178,9 +176,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
               >
-                <Card className="h-full hover:shadow-lg transition-all group overflow-hidden">
-                  <div className="h-48 overflow-hidden relative">
+                <Card className="h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden border-gray-100 flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -188,21 +187,25 @@ export default function Home() {
                         event.currentTarget.onerror = null;
                         event.currentTarget.src = NEWS_FALLBACK_IMAGE;
                       }}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-white/90 hover:bg-white text-purple-700 backdrop-blur-sm border-0 shadow-sm font-semibold">{item.category}</Badge>
+                    </div>
                   </div>
-                  <CardHeader>
-                    <Badge className="w-fit mb-2">{item.category}</Badge>
-                    <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
-                    <CardDescription className="text-xs">{item.date}</CardDescription>
+                  <CardHeader className="flex-1 pb-4">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-2 uppercase tracking-wider">
+                      <span>{item.date}</span>
+                    </div>
+                    <CardTitle className="text-xl line-clamp-2 leading-snug group-hover:text-purple-700 transition-colors">
+                      {item.title}
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{item.excerpt}</p>
-                    <Link href={`/news-media/${item.slug}`} className="cursor-pointer">
-                      <Button variant="ghost" size="sm" className="gap-2 p-0">
-                        Read More
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
+                  <CardContent className="mt-auto">
+                    <p className="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">{item.excerpt}</p>
+                    <Link href={`/news-media/${item.slug}`} className="cursor-pointer inline-flex items-center text-sm font-semibold text-purple-700 hover:text-purple-800 transition-colors">
+                      Read Article
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </CardContent>
                 </Card>
@@ -220,129 +223,57 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-24 sm:py-28 overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white">
-        <div aria-hidden className="pointer-events-none absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-24 w-[32rem] h-[32rem] rounded-full bg-purple-400/20 blur-3xl" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.6) 1px, transparent 0)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-6"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                </span>
-                <span className="font-medium">Live Customer Experience · Online now</span>
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-purple-900 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="p-10 sm:p-16 lg:p-20 flex flex-col justify-center text-white">
+                <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
+                  We're here to help.
+                </h2>
+                <p className="text-lg text-purple-100 max-w-lg mb-10 leading-relaxed">
+                  Our customer experience team is on standby to assist you. Reach out through your preferred channel for fast, reliable support across all GSG Brands services.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/customer-experience" className="cursor-pointer">
+                    <Button size="lg" className="w-full sm:w-auto gap-2 bg-white text-purple-900 hover:bg-gray-50 h-14 px-8 text-base font-semibold">
+                      <Headphones className="w-5 h-5" />
+                      Visit Customer Experience
+                    </Button>
+                  </Link>
+                </div>
               </div>
-
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Need a hand?{' '}
-                <span className="bg-gradient-to-r from-purple-200 via-fuchsia-200 to-white bg-clip-text text-transparent">
-                  We've got you.
-                </span>
-              </h2>
-              <p className="text-base sm:text-lg text-purple-100/90 max-w-xl mb-8 leading-relaxed">
-                Pick the channel that works for you. Our team is on standby through WhatsApp, Telegram, phone, and email — fast replies, real humans, zero runaround.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/customer-experience" className="cursor-pointer">
-                  <Button size="lg" className="gap-2 bg-white text-purple-900 hover:bg-purple-50 shadow-lg shadow-black/20">
-                    <Headphones className="w-5 h-5" />
-                    Contact Customer Experience
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-                <a
-                  href="tel:+233246033792"
-                  className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 px-6 h-11 text-sm font-medium transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  +233 (0) 246 033 792
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="lg:col-span-6"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  {
-                    name: 'WhatsApp',
-                    handle: '+233 246 033 792',
-                    href: 'https://wa.me/233246033792',
-                    icon: MessageCircle,
-                    accent: 'from-emerald-400 to-green-600',
-                  },
-                  {
-                    name: 'Telegram',
-                    handle: '@gsgbrandsgh',
-                    href: 'https://t.me/gsgbrandsgh',
-                    icon: Send,
-                    accent: 'from-sky-400 to-blue-600',
-                  },
-                  {
-                    name: 'Call Us',
-                    handle: '+233 (0) 579 033 792',
-                    href: 'tel:+233579033792',
-                    icon: Phone,
-                    accent: 'from-fuchsia-400 to-purple-600',
-                  },
-                  {
-                    name: 'Email',
-                    handle: 'info@gsgbrands.com.gh',
-                    href: 'mailto:info@gsgbrands.com.gh',
-                    icon: Mail,
-                    accent: 'from-amber-400 to-orange-600',
-                  },
-                ].map((channel) => (
-                  <a
-                    key={channel.name}
-                    href={channel.href}
-                    target={channel.href.startsWith('http') ? '_blank' : undefined}
-                    rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="group relative cursor-pointer rounded-2xl p-5 bg-white/[0.07] hover:bg-white/[0.12] border border-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-950/40"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${channel.accent} flex items-center justify-center shadow-lg`}>
+              
+              <div className="bg-purple-950 p-10 sm:p-16 lg:p-20 flex flex-col justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  {[
+                    { name: 'WhatsApp', handle: '+233 246 033 792', href: 'https://wa.me/233246033792', icon: MessageCircle },
+                    { name: 'Telegram', handle: '@gsgbrandsgh', href: 'https://t.me/gsgbrandsgh', icon: Send },
+                    { name: 'Call Us', handle: '+233 (0) 579 033 792', href: 'tel:+233579033792', icon: Phone },
+                    { name: 'Email', handle: 'info@gsgbrands.com.gh', href: 'mailto:info@gsgbrands.com.gh', icon: Mail },
+                  ].map((channel) => (
+                    <a
+                      key={channel.name}
+                      href={channel.href}
+                      target={channel.href.startsWith('http') ? '_blank' : undefined}
+                      rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="group flex items-start gap-4 p-5 rounded-2xl bg-purple-900/40 hover:bg-purple-800 border border-purple-800/50 hover:border-purple-600 transition-all"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center shrink-0 group-hover:bg-purple-700 transition-colors">
                         <channel.icon className="w-5 h-5 text-white" />
                       </div>
-                      <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
-                    </div>
-                    <p className="font-semibold text-white">{channel.name}</p>
-                    <p className="text-xs sm:text-sm text-purple-200/80 truncate mt-0.5">{channel.handle}</p>
-                  </a>
-                ))}
+                      <div>
+                        <p className="font-semibold text-white mb-1">{channel.name}</p>
+                        <p className="text-sm text-purple-200">{channel.handle}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                <p className="mt-8 text-sm text-purple-300 text-center lg:text-left">
+                  Live calls 05:00am – 02:00pm (Mon–Fri).
+                </p>
               </div>
-
-              <p className="mt-6 text-xs sm:text-sm text-purple-200/70 text-center sm:text-left">
-                Live calls 05:00am – 02:00pm (Mon–Fri) · See full support hours on the{' '}
-                <Link href="/customer-experience" className="underline underline-offset-2 hover:text-white">
-                  Customer Experience
-                </Link>{' '}
-                page.
-              </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

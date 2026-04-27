@@ -5,11 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Users, Target, Lightbulb, Rocket, Heart } from 'lucide-react';
 
 const teamMembers = [
-  { name: 'Derick', image: 'https://readdy.ai/api/search-image?query=creative%20african%20business%20professional%20male%20modern%20style%20portrait%20visionary&width=400&height=400&seq=team-3&orientation=square' },
-  { name: 'Reynold', image: 'https://readdy.ai/api/search-image?query=dedicated%20african%20operations%20manager%20male%20professional%20reliable%20portrait&width=400&height=400&seq=team-4&orientation=square' },
-  { name: 'Berlinda', image: 'https://readdy.ai/api/search-image?query=african%20business%20woman%20executive%20professional%20confident%20leadership%20portrait%20modern&width=400&height=400&seq=team-5&orientation=square' },
-  { name: 'TurkArthur', image: 'https://readdy.ai/api/search-image?query=african%20business%20leader%20executive%20portrait%20professional%20male%20suit%20confident%20smile%20studio%20lighting&width=400&height=400&seq=team-1&orientation=square' },
-  { name: 'Kennet', image: 'https://readdy.ai/api/search-image?query=young%20african%20corporate%20professional%20male%20smart%20casual%20innovative%20tech%20leader%20portrait&width=400&height=400&seq=team-2&orientation=square' },
+  { name: 'Derick', image: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Reynold', image: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Berlinda', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop' },
+  { name: 'TurkArthur', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Kennet', image: 'https://images.unsplash.com/photo-1531123897727-8f129e1bfa82?q=80&w=400&auto=format&fit=crop' },
 ];
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-white">
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src="https://readdy.ai/api/search-image?query=african%20team%20collaboration%20meeting%20strategy%20corporate%20office%20glass%20walls%20modern%20tech%20company%20ghana&width=1920&height=1080&seq=about-hero&orientation=landscape" className="w-full h-full object-cover" alt="Team" />
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1920&auto=format&fit=crop" className="w-full h-full object-cover" alt="Team" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/50 to-transparent"></div>
 
