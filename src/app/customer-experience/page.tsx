@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Send, Mail, Clock } from 'lucide-react';
+import { MessageCircle, Send, Mail, Clock, Globe } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,7 +13,7 @@ import InfoBanner from '@/components/InfoBanner';
 const contactMethods = [
   {
     title: 'Websites',
-    icon: MessageCircle,
+    icon: Globe,
     items: [
       { label: 'Goods', value: 'www.goods.gsgbrands.com.gh', link: 'https://goods.gsgbrands.com.gh' },
       { label: 'Shopper', value: 'www.shopper.gsgbrands.com.gh', link: 'https://shopper.gsgbrands.com.gh' },

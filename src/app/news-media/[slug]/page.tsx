@@ -7,6 +7,7 @@ import { Calendar, ArrowLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { newsArticles } from '@/lib/data';
+import { NEWS_FALLBACK_IMAGE } from '@/lib/newsFallbackImage';
 
 export default function NewsArticlePage() {
   const params = useParams();
@@ -55,6 +56,10 @@ export default function NewsArticlePage() {
               <img
                 src={article.image}
                 alt={article.title}
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = NEWS_FALLBACK_IMAGE;
+                }}
                 className="w-full h-full object-cover"
               />
             </div>

@@ -7,6 +7,7 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { NEWS_FALLBACK_IMAGE } from '@/lib/newsFallbackImage';
 
 const categories = ['All', 'Announcements', 'Updates', 'Guides', 'Press'];
 
@@ -74,6 +75,10 @@ export default function NewsMediaPage() {
                     <img
                       src={article.image}
                       alt={article.title}
+                      onError={(event) => {
+                        event.currentTarget.onerror = null;
+                        event.currentTarget.src = NEWS_FALLBACK_IMAGE;
+                      }}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
