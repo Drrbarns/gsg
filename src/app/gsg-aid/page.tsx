@@ -223,8 +223,13 @@ export default function GsgAidPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-xl shadow-purple-900/20"
+            className="relative rounded-3xl overflow-hidden shadow-xl shadow-purple-900/20"
           >
+            <div className="absolute inset-0">
+              <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-purple-900/90 to-purple-950/95"></div>
+
             <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
             <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl" />
             <div
