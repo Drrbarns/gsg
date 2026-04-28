@@ -48,15 +48,6 @@ const ecosystem = [
   { title: 'GSG-AID', description: 'Community support and empowerment programs designed to create practical, sustainable impact across Ghana.', icon: Heart },
 ];
 
-const ecosystemAccent = [
-  'from-violet-500 to-fuchsia-600',
-  'from-fuchsia-500 to-rose-500',
-  'from-sky-500 to-indigo-600',
-  'from-emerald-500 to-teal-600',
-  'from-amber-500 to-orange-600',
-  'from-purple-600 to-purple-800',
-];
-
 const principles = [
   'Save customers time without compromising quality.',
   'Protect both buyers and sellers through clearer processes.',
@@ -227,13 +218,10 @@ export default function AboutPage() {
       </section>
 
       {/* Ecosystem */}
-      <section className="relative py-20 md:py-28 bg-neutral-950 text-white overflow-hidden">
-        <div aria-hidden className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(ellipse_at_30%_-10%,rgba(168,85,247,0.35),transparent_55%)]" />
-        <div aria-hidden className="absolute inset-0 opacity-[0.2] bg-[radial-gradient(ellipse_at_80%_100%,rgba(236,72,153,0.25),transparent_45%)]" />
-
+      <section className="relative py-20 md:py-28 bg-[#0a0a0c] text-white overflow-hidden border-t border-white/5">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 md:mb-16">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300/90 mb-3">One brand, many front doors</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-neutral-400 mb-3">One brand, many front doors</p>
             <h2 className={`${displaySerif.className} text-3xl sm:text-4xl md:text-[2.65rem] leading-tight mb-5`}>
               The ecosystem we are building
             </h2>
@@ -250,20 +238,16 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-30px' }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7 hover:bg-white/[0.07] transition-colors duration-300 overflow-hidden"
+                className="group relative flex flex-col justify-between rounded-3xl border border-white/[0.08] bg-[#121214] p-8 sm:p-10 hover:bg-[#1a1a1c] hover:border-white/[0.15] transition-all duration-500"
               >
-                <div
-                  aria-hidden
-                  className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${ecosystemAccent[index]}`}
-                />
-                <div className="pl-4">
+                <div>
                   <div
-                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${ecosystemAccent[index]} text-white shadow-lg mb-5`}
+                    className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-white mb-8 border border-white/5 group-hover:bg-white/10 group-hover:scale-105 transition-all duration-500"
                   >
-                    <item.icon className="h-5 w-5" strokeWidth={2} />
+                    <item.icon className="h-6 w-6 text-neutral-200" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 tracking-tight">{item.title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">{item.title}</h3>
+                  <p className="text-[15px] sm:text-base text-neutral-400 leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
