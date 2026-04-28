@@ -264,54 +264,52 @@ export default function CustomerExperiencePage() {
         </div>
       </section>
 
-      {/* Ecosystem — dark band, list not grid of mini-cards */}
-      <section className="relative py-16 md:py-24 bg-[#111016] text-white overflow-hidden">
-        <div aria-hidden className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      {/* Ecosystem — light cards grid */}
+      <section className="relative py-16 md:py-24 bg-white border-t border-neutral-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-10 md:mb-14">
+          <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-12 md:mb-16">
             <div className="flex-1">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300/90 mb-2">Websites</p>
-              <h2 className={`${display.className} text-3xl sm:text-4xl text-white`}>Every product, one front door each.</h2>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-700 mb-2">Websites</p>
+              <h2 className={`${display.className} text-3xl sm:text-4xl text-neutral-950`}>Every product, one front door each.</h2>
             </div>
-            <p className="lg:max-w-sm text-sm text-neutral-400 leading-relaxed">
+            <p className="lg:max-w-sm text-sm text-neutral-600 leading-relaxed">
               These domains are the live entry points into our stack — goods, logistics, marketplace, food, and more.
             </p>
           </div>
 
-          <ul className="divide-y divide-white/[0.08] border border-white/[0.08] rounded-2xl overflow-hidden bg-white/[0.03]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {websiteUnits.map((unit, index) => (
-              <motion.li
+              <motion.a
                 key={unit.title}
-                initial={{ opacity: 0, x: -8 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                href={unit.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                className="group relative flex flex-col justify-between p-6 sm:p-8 h-full rounded-3xl bg-[#faf8f4] border border-neutral-900/[0.06] hover:border-purple-900/10 hover:shadow-xl hover:shadow-purple-900/5 transition-all overflow-hidden"
               >
-                <a
-                  href={unit.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5 hover:bg-white/[0.05] transition-colors"
-                >
+                <div className="flex items-start justify-between mb-8">
                   <span
-                    className={`hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${websiteStripeClasses[index]} shadow-lg`}
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${websiteStripeClasses[index]} shadow-lg shadow-purple-900/20`}
                   >
-                    <unit.icon className="w-[18px] h-[18px] text-white" strokeWidth={2} />
+                    <unit.icon className="w-6 h-6 text-white" strokeWidth={2} />
                   </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-white tracking-tight truncate sm:whitespace-normal">{unit.title}</p>
-                    <p className="font-mono text-[12px] sm:text-[13px] text-purple-200/70 truncate">{unit.domain}</p>
-                  </div>
-                  <span className="text-neutral-500 text-xs tabular-nums hidden sm:inline">{String(index + 1).padStart(2, '0')}</span>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors shrink-0" />
-                </a>
-              </motion.li>
+                  <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-purple-700 group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
+                </div>
+                <div>
+                  <p className="font-bold text-neutral-900 text-lg mb-1 tracking-tight group-hover:text-purple-950 transition-colors pr-2 truncate sm:whitespace-normal">{unit.title}</p>
+                  <p className="font-mono text-[13px] text-neutral-500 truncate">{unit.domain}</p>
+                </div>
+                <div aria-hidden className="absolute -bottom-16 -right-16 w-48 h-48 bg-gradient-to-br from-purple-100 to-transparent rounded-full opacity-0 group-hover:opacity-50 transition-opacity blur-3xl" />
+              </motion.a>
             ))}
-          </ul>
+          </div>
 
-          <p className="mt-8 text-center text-sm text-neutral-500">
+          <p className="mt-12 text-center text-sm text-neutral-500 font-medium">
             Looking for FAQs?{' '}
-            <Link href="/ask-gsg-brands" className="text-purple-300 hover:text-purple-100 underline underline-offset-4">
+            <Link href="/ask-gsg-brands" className="text-purple-700 hover:text-purple-900 underline underline-offset-4">
               Ask GSG Brands
             </Link>
           </p>
