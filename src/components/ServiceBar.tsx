@@ -25,9 +25,11 @@ export default function ServiceBar() {
           <div className="hidden md:flex items-center gap-4 opacity-80 shrink-0">
             <span>GSG Brands Business Units</span>
           </div>
-          <div className="flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-1.5 md:gap-4 w-full md:w-auto justify-start md:justify-end">
+          <div
+            className="flex w-full md:w-auto md:flex-wrap items-center justify-start md:justify-end gap-x-4 gap-y-2 md:gap-y-1.5 max-md:flex-nowrap max-md:overflow-x-auto max-md:overflow-y-hidden max-md:-mx-4 max-md:px-4 max-md:pb-0.5 max-md:snap-x max-md:snap-mandatory touch-pan-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {services.map((service) => (
-              <div key={service.name} className="whitespace-nowrap flex-shrink-0">
+              <div key={service.name} className="shrink-0 whitespace-nowrap snap-start">
                 {service.active ? (
                   <a
                     href={service.url}

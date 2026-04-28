@@ -35,15 +35,15 @@ export default function GsgAidPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* HERO */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white">
-        <div className="absolute inset-0 opacity-30">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-black text-white">
+        <div className="absolute inset-0">
           <img
             src="/images/gsg-aid-community.png"
             alt="GSG-AID"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/35"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <motion.div
@@ -55,15 +55,15 @@ export default function GsgAidPage() {
             <div className="w-20 h-20 flex items-center justify-center bg-white/10 rounded-full mb-6 text-purple-300 border border-purple-400/30">
               <Heart className="w-10 h-10" />
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight px-1">
               Empowering <span className="text-purple-300">Communities</span>
             </h1>
-            <p className="text-xl text-purple-100 mb-10 leading-relaxed">
+            <p className="text-base sm:text-xl text-neutral-200 mb-10 leading-relaxed">
               GSG-AID is dedicated to making a difference across Ghana through sustainable support, empowerment programs, and strategic partnerships that create lasting positive impact.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/customer-experience">
-                <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 border-none h-14 px-8 text-lg font-bold gap-2">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+              <Link href="/customer-experience" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full bg-white text-purple-900 hover:bg-purple-50 border-none h-14 px-8 text-lg font-bold gap-2">
                   Partner With Us
                   <ArrowRight className="w-5 h-5" />
                 </Button>
@@ -228,7 +228,7 @@ export default function GsgAidPage() {
             <div className="absolute inset-0">
               <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/90"></div>
+            <div className="absolute inset-0 bg-black/30"></div>
 
             <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
             <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl" />

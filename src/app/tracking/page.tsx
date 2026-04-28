@@ -51,11 +51,11 @@ export default function TrackingPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-25">
+      <section className="relative bg-black text-white py-24 overflow-hidden">
+        <div className="absolute inset-0">
           <img src="/images/courier-delivery-rider.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,8 +66,8 @@ export default function TrackingPage() {
             <div className="w-20 h-20 flex items-center justify-center bg-white/10 rounded-full mx-auto mb-6">
               <Package className="w-10 h-10" />
             </div>
-            <h1 className="text-5xl font-bold mb-6">Track Your Order</h1>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Track Your Order</h1>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-200 max-w-3xl mx-auto px-1">
               Enter your Order ID or Transaction ID to track your delivery in real-time
             </p>
           </motion.div>
@@ -90,8 +90,8 @@ export default function TrackingPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleTrack} className="flex gap-3">
-                  <div className="flex-1">
+                <form onSubmit={handleTrack} className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+                  <div className="min-w-0 flex-1">
                     <Input
                       type="text"
                       placeholder="Enter Order ID or Transaction ID"
@@ -101,7 +101,7 @@ export default function TrackingPage() {
                       required
                     />
                   </div>
-                  <Button type="submit" size="lg" className="gap-2">
+                  <Button type="submit" size="lg" className="gap-2 w-full sm:w-auto shrink-0 justify-center">
                     <Search className="w-5 h-5" />
                     Track
                   </Button>

@@ -6,7 +6,7 @@ import { FileText } from 'lucide-react';
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24">
+      <section className="bg-black text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -17,8 +17,8 @@ export default function TermsPage() {
             <div className="w-20 h-20 flex items-center justify-center bg-white/10 rounded-full mx-auto mb-6">
               <FileText className="w-10 h-10" />
             </div>
-            <h1 className="text-5xl font-bold mb-6">General Terms & Conditions</h1>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 px-2 leading-tight">General Terms & Conditions</h1>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-200 max-w-3xl mx-auto px-2">
               Last updated: January 2024
             </p>
           </motion.div>
@@ -32,7 +32,7 @@ export default function TermsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="prose prose-lg max-w-none"
+            className="prose prose-sm sm:prose-lg max-w-none"
           >
             <h2 className="text-3xl font-bold mb-4">Acceptance of Terms</h2>
             <div className="space-y-2 mb-8">

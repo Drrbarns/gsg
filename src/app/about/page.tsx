@@ -1,10 +1,17 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import Image from 'next/image';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DM_Serif_Display } from 'next/font/google';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, Heart, Rocket, Shield, ShoppingBag, Target, Truck, Users, Utensils } from 'lucide-react';
+
+const displaySerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 const teamMembers = [
   { name: 'Derick', image: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?q=80&w=400&auto=format&fit=crop' },
@@ -41,6 +48,15 @@ const ecosystem = [
   { title: 'GSG-AID', description: 'Community support and empowerment programs designed to create practical, sustainable impact across Ghana.', icon: Heart },
 ];
 
+const ecosystemAccent = [
+  'from-violet-500 to-fuchsia-600',
+  'from-fuchsia-500 to-rose-500',
+  'from-sky-500 to-indigo-600',
+  'from-emerald-500 to-teal-600',
+  'from-amber-500 to-orange-600',
+  'from-purple-600 to-purple-800',
+];
+
 const principles = [
   'Save customers time without compromising quality.',
   'Protect both buyers and sellers through clearer processes.',
@@ -49,213 +65,310 @@ const principles = [
 ];
 
 export default function AboutPage() {
-  return (
-    <main className="min-h-screen bg-white">
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src="/images/team-leadership-ghana.png" className="w-full h-full object-cover" alt="GSG Brands Leadership Team" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/35"></div>
+  const heroRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ['start end', 'end start'],
+  });
+  const heroBgY = useTransform(heroScroll, [0, 1], ['-12%', '12%']);
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  return (
+    <main className="min-h-screen bg-[#faf9fc] text-gray-900">
+      {/* Hero */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[min(92vh,900px)] flex items-end md:items-center overflow-hidden bg-[#07040f]"
+      >
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            className="absolute left-0 right-0 w-full will-change-transform"
+            style={{
+              top: '-18%',
+              height: '135%',
+              y: prefersReducedMotion ? 0 : heroBgY,
+            }}
           >
-            <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
-              About <span className="text-purple-400">GSG Brands</span>
-            </h1>
-            <p className="text-xl text-white/85 max-w-2xl leading-relaxed">
-              GSG Brands is a Ghanaian service ecosystem built around one simple promise: make everyday needs easier to access, safer to transact, and better value for customers, vendors, and communities.
-            </p>
+            <Image
+              src="/images/team-leadership-ghana.png"
+              alt="GSG Brands leadership team"
+              fill
+              className="object-cover object-[center_25%]"
+              priority
+              sizes="100vw"
+              quality={88}
+            />
           </motion.div>
+          <div className="absolute inset-0 z-[1] bg-black/30" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 md:py-28">
+          <div className="max-w-4xl md:max-w-[42rem]">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-[11px] sm:text-xs font-bold tracking-[0.35em] uppercase text-purple-200/95 mb-5"
+            >
+              Ghana · Connected services
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.05 }}
+            >
+              <h1
+                className={`${displaySerif.className} text-[2.85rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] text-white mb-8 tracking-tight`}
+              >
+                About{' '}
+                <span className="italic text-purple-200/95">GSG Brands</span>
+              </h1>
+              <div className="flex flex-col sm:flex-row sm:items-stretch gap-6 sm:gap-10">
+                <div aria-hidden className="hidden sm:block w-px shrink-0 bg-gradient-to-b from-purple-400/90 via-purple-300/40 to-transparent" />
+                <p className="text-lg sm:text-xl text-neutral-100/90 leading-relaxed max-w-2xl border-l-2 border-purple-400/50 sm:border-l-0 sm:pl-0 pl-4 sm:pl-0">
+                  A Ghanaian service ecosystem built on one promise: make everyday needs easier to access, safer to
+                  transact, and better value for customers, vendors, and communities.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-neutral-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24"
-          >
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-5 tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                Our Story
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
-                Built to solve everyday friction.
+      {/* Our story — editorial split */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(124,58,237,0.06)_0%,transparent_45%)]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.4] bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.07)_1px,transparent_0)] bg-[length:32px_32px]"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start mb-20 md:mb-28">
+            <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-700 mb-3">Our story</p>
+              <h2 className={`${displaySerif.className} text-4xl sm:text-[2.65rem] leading-tight text-gray-950 mb-6`}>
+                Built to solve everyday friction — not chase trends.
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                GSG Brands started from a practical observation: people need reliable ways to shop, send items, buy and sell safely, access good local food, and get support without wasting time moving from place to place.
+              <p className="text-neutral-600 leading-relaxed mb-4 text-[17px]">
+                People need dependable ways to shop, send parcels, trade safely, find good street food, and get help —
+                without losing hours bouncing between unreliable options.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Instead of treating each need as a separate problem, we are connecting them under one brand so customers can move through daily life with more confidence, less stress, and better value.
+              <p className="text-neutral-600 leading-relaxed text-[17px]">
+                Rather than scattering those needs across random brands, we connect them under one name so ordinary days
+                run smoother.
               </p>
             </div>
 
-            <div className="lg:col-span-7">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/10">
-                <img
-                  src="/images/team-leadership-ghana.png"
-                  alt="GSG Brands team"
-                  className="w-full h-[420px] object-cover"
+            <div className="lg:col-span-7 xl:col-span-8">
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="absolute -inset-4 md:-inset-6 rounded-[2rem] bg-gradient-to-br from-purple-200/40 via-fuchsia-100/30 to-transparent blur-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <p className="text-sm uppercase tracking-widest text-white/60 font-bold mb-2">What drives us</p>
-                  <p className="text-2xl font-bold max-w-xl">
-                    Building trusted services that connect commerce, logistics, support, and community impact across Ghana.
-                  </p>
+                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black/10">
+                  <div className="relative aspect-[21/13] md:aspect-[16/10]">
+                    <Image
+                      src="/images/team-leadership-ghana.png"
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-950/75 via-purple-950/15 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-9 md:p-10">
+                      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-white/65 font-bold mb-2">
+                        What drives us
+                      </p>
+                      <p className={`${displaySerif.className} text-white text-xl sm:text-2xl md:text-3xl max-w-xl leading-snug`}>
+                        Trusted commerce, logistics, support, and community — woven together across Ghana.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            {storyCards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-            >
-              <Card className="h-full border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-purple-100/60 hover:-translate-y-1 transition-all duration-300 rounded-3xl overflow-hidden">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 text-purple-700">
-                    <card.icon className="w-7 h-7" />
-                  </div>
-                  <CardTitle className="text-2xl mb-2">{card.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 leading-relaxed">
-                    {card.copy}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-            ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <div className="text-center mb-12 max-w-3xl mx-auto">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">The ecosystem we are building</h2>
-              <p className="text-lg text-gray-600">
-                GSG Brands is not one service. It is a connected group of solutions designed around real customer needs.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {ecosystem.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
+          {/* Three pillars — horizontal rule + numbered editorial blocks */}
+          <div className="relative border-y border-gray-200/80 bg-white/60 backdrop-blur-sm">
+            <div className="divide-y divide-gray-100">
+              {storyCards.map((card, index) => (
+                <motion.article
+                  key={card.title}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.06 }}
-                  className="group"
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.45, delay: index * 0.06 }}
+                  className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-12 px-1 md:px-4"
                 >
-                  <div className="h-full p-6 rounded-3xl bg-white border border-gray-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-100/50 transition-all duration-300">
-                    <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center mb-5 group-hover:bg-purple-700 group-hover:text-white transition-colors">
-                      <item.icon className="w-5 h-5" />
+                  <div className="md:col-span-3 flex md:block items-center gap-4">
+                    <span
+                      className={`${displaySerif.className} text-5xl md:text-6xl text-purple-200 select-none leading-none`}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-600 text-white shadow-lg shadow-purple-900/20 md:mt-4">
+                      <card.icon className="h-5 w-5" strokeWidth={2} />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
                   </div>
-                </motion.div>
+                  <div className="md:col-span-9">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-950 tracking-tight mb-3">{card.title}</h3>
+                    <p className="text-neutral-600 leading-relaxed max-w-3xl text-[17px]">{card.copy}</p>
+                  </div>
+                </motion.article>
               ))}
             </div>
-          </motion.div>
+          </div>
+        </div>
+      </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-24"
-          >
-            <div className="rounded-3xl bg-[#0A0514] text-white p-8 sm:p-10 overflow-hidden relative">
-              <div aria-hidden className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-purple-500/30 blur-3xl" />
-              <div className="relative">
-                <p className="text-sm uppercase tracking-widest text-purple-300 font-bold mb-4">Our principles</p>
-                <h2 className="text-3xl font-bold mb-6">What customers should feel when they use GSG Brands</h2>
-                <div className="space-y-4">
-                  {principles.map((principle) => (
-                    <div key={principle} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-purple-300 shrink-0 mt-0.5" />
-                      <p className="text-white/75 leading-relaxed">{principle}</p>
-                    </div>
-                  ))}
+      {/* Ecosystem */}
+      <section className="relative py-20 md:py-28 bg-neutral-950 text-white overflow-hidden">
+        <div aria-hidden className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(ellipse_at_30%_-10%,rgba(168,85,247,0.35),transparent_55%)]" />
+        <div aria-hidden className="absolute inset-0 opacity-[0.2] bg-[radial-gradient(ellipse_at_80%_100%,rgba(236,72,153,0.25),transparent_45%)]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-14 md:mb-16">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300/90 mb-3">One brand, many front doors</p>
+            <h2 className={`${displaySerif.className} text-3xl sm:text-4xl md:text-[2.65rem] leading-tight mb-5`}>
+              The ecosystem we are building
+            </h2>
+            <p className="text-neutral-400 text-lg leading-relaxed">
+              Six connected lines of business — each designed around a real bottleneck in Ghanaian daily life.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+            {ecosystem.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7 hover:bg-white/[0.07] transition-colors duration-300 overflow-hidden"
+              >
+                <div
+                  aria-hidden
+                  className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${ecosystemAccent[index]}`}
+                />
+                <div className="pl-4">
+                  <div
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${ecosystemAccent[index]} text-white shadow-lg mb-5`}
+                  >
+                    <item.icon className="h-5 w-5" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 tracking-tight">{item.title}</h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed">{item.description}</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="rounded-3xl bg-white border border-gray-100 p-8 sm:p-10 shadow-sm">
-              <p className="text-sm uppercase tracking-widest text-purple-700 font-bold mb-4">Our direction</p>
-              <h2 className="text-3xl font-bold text-gray-900 mb-5">From everyday errands to national infrastructure.</h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                We are growing GSG Brands into a trusted operating layer for commerce, convenience, logistics, customer experience, and community support in Ghana. The long-term goal is simple: build services people can rely on every day.
+      {/* Principles + CTA strip */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="relative rounded-[2rem] overflow-hidden bg-[#0c0618] text-white p-9 sm:p-11 border border-white/10"
+            >
+              <div aria-hidden className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-purple-500/25 blur-3xl" />
+              <div aria-hidden className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_1px,transparent_1.5px)] bg-[length:28px_28px]" />
+
+              <div className="relative">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300/95 mb-4">Our principles</p>
+                <h2 className={`${displaySerif.className} text-2xl sm:text-3xl leading-snug mb-8`}>What using GSG should feel like</h2>
+                <ul className="space-y-5">
+                  {principles.map((principle) => (
+                    <li key={principle} className="flex gap-3.5 items-start">
+                      <CheckCircle className="w-5 h-5 text-fuchsia-300/95 shrink-0 mt-1" strokeWidth={2} />
+                      <span className="text-[15px] sm:text-base text-neutral-200/90 leading-relaxed">{principle}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="relative rounded-[2rem] border border-gray-200 bg-white p-9 sm:p-11 shadow-xl shadow-purple-900/5 flex flex-col"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-0 right-0 h-40 w-40 rounded-bl-[100%] bg-gradient-to-bl from-purple-50 to-transparent"
+              />
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-700 mb-4">Our direction</p>
+              <h2 className={`${displaySerif.className} text-2xl sm:text-3xl text-gray-950 leading-snug mb-5`}>
+                From everyday errands to national-scale reliability.
+              </h2>
+              <p className="text-neutral-600 leading-relaxed mb-8 flex-1 text-[17px]">
+                We are growing GSG Brands into a trusted operating layer for commerce, convenience, logistics, customer
+                experience, and community support in Ghana — services people can lean on every day.
               </p>
-              <Link href="/gsg-brands">
-                <Button className="gap-2 bg-purple-700 hover:bg-purple-800 text-white">
+              <Link href="/gsg-brands" className="inline-flex w-fit">
+                <Button size="lg" className="gap-2 rounded-full bg-purple-700 hover:bg-purple-800 text-white px-8 h-12">
                   Explore GSG Brands
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Advisory & Executive Team</h2>
-              <p className="text-lg text-gray-600">The minds driving GSG Brands forward</p>
+      {/* Team */}
+      <section className="pb-24 md:pb-32 pt-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-700 mb-2">People</p>
+              <h2 className={`${displaySerif.className} text-3xl sm:text-4xl text-gray-950`}>Advisory & executive team</h2>
             </div>
+            <p className="text-neutral-500 max-w-md md:text-right text-[15px] leading-relaxed">
+              Leadership focused on execution, trust, and long-term value for customers and partners.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100">
-                    <div className="relative h-80 overflow-hidden bg-gray-200">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="p-6 text-center">
-                      <h3 className="text-2xl font-bold mb-1 text-gray-900">{member.name}</h3>
-                    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="group"
+              >
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-200 ring-1 ring-black/5 shadow-lg">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-bold mb-1">Team</p>
+                    <p className={`${displaySerif.className} text-2xl text-white`}>{member.name}</p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

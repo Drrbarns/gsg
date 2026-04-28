@@ -1,45 +1,65 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MessageCircle, Send, Mail, Clock, Globe, Phone, ArrowRight, ShoppingBag, Users, Shield, MapPin, Utensils } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { DM_Serif_Display } from 'next/font/google';
+import {
+  MessageCircle,
+  Send,
+  Mail,
+  Clock,
+  Phone,
+  ArrowRight,
+  ArrowUpRight,
+  ShoppingBag,
+  Users,
+  Shield,
+  MapPin,
+  Utensils,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import InfoBanner from '@/components/InfoBanner';
+
+const display = DM_Serif_Display({ subsets: ['latin'], weight: ['400'] });
 
 const directContactMethods = [
   {
     title: 'WhatsApp',
+    subtitle: 'Fastest lane',
     icon: MessageCircle,
-    accent: 'from-emerald-500 to-emerald-600',
-    accentSoft: 'bg-emerald-50 text-emerald-600',
+    accent: '#059669',
     items: [
       { label: 'Main', value: '+233 246 033 792', link: 'https://wa.me/233246033792' },
-      { label: 'Alternative', value: '+233 579 033 792', link: 'https://wa.me/233579033792' },
+      { label: 'Alt', value: '+233 579 033 792', link: 'https://wa.me/233579033792' },
     ],
   },
   {
     title: 'Telegram',
+    subtitle: '@gsgbrandsgh',
     icon: Send,
-    accent: 'from-sky-500 to-sky-600',
-    accentSoft: 'bg-sky-50 text-sky-600',
-    items: [
-      { label: 'Channel', value: '@gsgbrandsgh', link: 'https://t.me/gsgbrandsgh' },
-    ],
+    accent: '#0284c7',
+    items: [{ label: 'Channel', value: '@gsgbrandsgh', link: 'https://t.me/gsgbrandsgh' }],
   },
   {
     title: 'Email',
+    subtitle: 'Written requests',
     icon: Mail,
-    accent: 'from-amber-500 to-amber-600',
-    accentSoft: 'bg-amber-50 text-amber-600',
-    items: [
-      { label: 'General Inquiries', value: 'info@gsgbrands.com.gh', link: 'mailto:info@gsgbrands.com.gh' },
-    ],
+    accent: '#d97706',
+    items: [{ label: 'Inbox', value: 'info@gsgbrands.com.gh', link: 'mailto:info@gsgbrands.com.gh' }],
   },
 ];
+
+const websiteStripeClasses = [
+  'from-violet-500 to-fuchsia-600',
+  'from-fuchsia-500 to-rose-500',
+  'from-sky-500 to-indigo-600',
+  'from-amber-500 to-orange-600',
+  'from-emerald-500 to-teal-600',
+] as const;
 
 const websiteUnits = [
   { title: 'Convenience Goods & More', domain: 'goods.gsgbrands.com.gh', link: 'https://goods.gsgbrands.com.gh', icon: ShoppingBag },
@@ -51,19 +71,19 @@ const websiteUnits = [
 
 const supportHours = [
   {
-    title: 'Regular Hours',
+    title: 'Regular',
     phones: ['+233 (0) 246 033 792', '+233 (0) 579 033 792'],
     schedule: [
-      { days: 'Monday - Friday', hours: '05:00am - 02:00pm' },
-      { days: 'Sat. & Holidays', hours: '05:00am - 09:00am' },
+      { days: 'Mon – Fri', hours: '05:00 – 14:00' },
+      { days: 'Sat & holidays', hours: '05:00 – 09:00' },
     ],
   },
   {
-    title: 'Extended Hours',
+    title: 'Extended',
     phone: '+233 (0) 571 303 716',
     schedule: [
-      { days: 'Monday - Friday', hours: '02:01pm - 06:00pm' },
-      { days: 'Sat. & Holidays', hours: '09:01am - 02:00pm' },
+      { days: 'Mon – Fri', hours: '14:01 – 18:00' },
+      { days: 'Sat & holidays', hours: '09:01 – 14:00' },
     ],
   },
 ];
@@ -77,340 +97,353 @@ export default function CustomerExperiencePage() {
     message: '',
   });
 
+  const heroRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start end', 'end start'],
+  });
+  const heroParallaxY = useTransform(scrollYProgress, [0, 1], ['-11%', '11%']);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: 'Message Submitted (Demo)',
-      description: 'Your message has been received. We will get back to you soon!',
+      description: 'Thank you — we will get back to you soon.',
     });
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   return (
-    <main className="min-h-screen bg-white">
-      <InfoBanner />
-
-      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-25">
-          <img src="/images/customer-experience-agent.png" alt="Customer Experience" className="w-full h-full object-cover" />
+    <main className="min-h-screen bg-[#f3f1ed] text-neutral-900 antialiased">
+      {/* Slim context bar — typographic, not a “marketing pill row” */}
+      <div className="border-b border-neutral-900/10 bg-[#ebe7df]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-2 sm:gap-3 text-[13px] text-neutral-700 min-w-0">
+          <span className="font-medium tracking-tight min-w-0 leading-snug">Chat — WhatsApp & Telegram — active around the clock.</span>
+          <span className="tabular-nums text-neutral-500 shrink-0">Accra · GH</span>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      </div>
+
+      {/* Hero — asymmetric, parallax, 30% black */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[min(88vh,820px)] flex flex-col justify-end md:justify-center overflow-hidden bg-[#0c0a0f]"
+      >
+        <div className="absolute inset-0 z-0">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            className="absolute left-0 right-0 w-full will-change-transform"
+            style={{
+              top: '-16%',
+              height: '132%',
+              y: prefersReducedMotion ? 0 : heroParallaxY,
+            }}
           >
-            <h1 className="text-5xl font-bold mb-6">Customer Experience</h1>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              We are here to help you 24/7. Reach out through your preferred channel and experience exceptional customer service.
-            </p>
+            <Image
+              src="/images/customer-experience-agent.png"
+              alt=""
+              fill
+              className="object-cover object-[center_22%]"
+              priority
+              sizes="100vw"
+              quality={85}
+            />
           </motion.div>
+          <div className="absolute inset-0 z-[1] bg-black/30" />
+          <div
+            aria-hidden
+            className="absolute inset-0 z-[2] bg-gradient-to-t from-[#0c0a0f] via-transparent to-transparent opacity-90 md:opacity-70"
+          />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-24 md:py-0 md:min-h-[min(88vh,820px)] md:flex md:items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end lg:items-center w-full">
+            <div className="lg:col-span-7 xl:col-span-6">
+              <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-neutral-300 mb-4 md:mb-5">
+                Support · GSG Brands
+              </p>
+              <h1
+                className={`${display.className} text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.02] text-white tracking-tight`}
+              >
+                Real people.
+                <br />
+                <span className="italic text-purple-200/95">Straight answers.</span>
+              </h1>
+              <p className="mt-6 max-w-lg text-[17px] sm:text-lg text-neutral-200/90 leading-relaxed">
+                Routing, courier, commerce, or escrow — whichever product you touch, one team stays within reach on
+                chat, phone, and email.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 xl:col-span-6 lg:pl-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-md lg:max-w-none lg:ml-auto">
+                <div className="col-span-2 rounded-xl border border-white/15 bg-white/[0.07] backdrop-blur-md px-4 py-4 text-white">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-semibold mb-1">Response</p>
+                  <p className="text-lg font-semibold tracking-tight">Usually under 24h on email</p>
+                </div>
+                <div className="rounded-xl border border-white/15 bg-white/[0.05] px-4 py-3 text-sm text-white/85">
+                  <MessageCircle className="w-4 h-4 text-emerald-400 mb-1" />
+                  Chat-first
+                </div>
+                <div className="rounded-xl border border-white/15 bg-white/[0.05] px-4 py-3 text-sm text-white/85">
+                  <Clock className="w-4 h-4 text-amber-300 mb-1" />
+                  Call slots
+                </div>
+                <Link
+                  href="#contact"
+                  className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-white text-[#1a1025] font-semibold text-sm py-3.5 hover:bg-neutral-100 transition-colors"
+                >
+                  Write the team
+                  <ArrowDownIcon className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-gray-50/40 to-white">
+      {/* Channels — row-based, not three identical cards */}
+      <section className="relative py-16 md:py-24 border-t border-neutral-900/10 bg-[#f3f1ed]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Direct Contact Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-4 tracking-wider uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Direct Channels
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
+            <div className="max-w-xl">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-900/80 mb-2">Reach us</p>
+              <h2 className={`${display.className} text-3xl sm:text-4xl text-neutral-950`}>Pick a channel.</h2>
+              <p className="mt-3 text-neutral-600 text-[17px] leading-relaxed">
+                Same humans across WhatsApp, Telegram, and email — no ticket lottery, no faceless bots.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Talk to us instantly</h2>
-            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
-              Pick your preferred channel below — our team is online and ready to respond.
-            </p>
-          </motion.div>
+            <div className="hidden md:block text-right text-neutral-400 text-sm max-w-[12rem] leading-snug">
+              Tap a row. Your OS opens the app we need.
+            </div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          <div className="divide-y divide-neutral-900/[0.08] rounded-2xl border border-neutral-900/[0.08] bg-[#faf8f4] overflow-hidden shadow-sm">
             {directContactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group h-full"
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                className="group flex flex-col sm:flex-row sm:items-stretch"
               >
-                <div className="relative h-full p-7 rounded-3xl bg-white border border-gray-100 hover:border-transparent group-hover:shadow-2xl group-hover:shadow-purple-200/30 transition-all duration-500 hover:-translate-y-1 flex flex-col overflow-hidden">
-                  <div aria-hidden className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${method.accent} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
-
-                  <div className="relative flex items-start justify-between mb-6">
-                    <div className={`w-14 h-14 flex items-center justify-center rounded-2xl ${method.accentSoft} group-hover:scale-110 transition-transform duration-300`}>
-                      <method.icon className="w-6 h-6" />
+                <div
+                  className="sm:w-44 shrink-0 flex items-center gap-4 px-5 py-5 sm:py-6 border-b sm:border-b-0 sm:border-r border-neutral-900/[0.06] bg-[#f0ebe3]/80"
+                  style={{ borderLeftWidth: 4, borderLeftColor: method.accent }}
+                >
+                  <method.icon className="w-6 h-6 text-neutral-800" strokeWidth={1.75} />
+                  <div>
+                    <p className="font-bold text-neutral-900 tracking-tight">{method.title}</p>
+                    <p className="text-xs text-neutral-500 mt-0.5">{method.subtitle}</p>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-wrap items-center gap-x-10 gap-y-4 px-5 py-5 sm:py-6">
+                  {method.items.map((item) => (
+                    <div key={item.label}>
+                      <p className="text-[10px] uppercase tracking-[0.15em] text-neutral-400 font-semibold mb-1">
+                        {item.label}
+                      </p>
+                      <a
+                        href={item.link}
+                        target={item.link.startsWith('http') ? '_blank' : undefined}
+                        rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-[15px] font-semibold text-neutral-900 hover:text-purple-800 inline-flex items-center gap-1 transition-colors group/link"
+                      >
+                        {item.value}
+                        <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/link:opacity-100 transition-opacity" />
+                      </a>
                     </div>
-                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{`0${index + 1}`}</span>
-                  </div>
-
-                  <h3 className="relative text-xl font-bold text-gray-900 mb-5 tracking-tight">{method.title}</h3>
-
-                  <div className="relative space-y-4 flex-1">
-                    {method.items.map((item) => (
-                      <div key={item.label}>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">{item.label}</p>
-                        <a
-                          href={item.link}
-                          target={item.link.startsWith('http') ? "_blank" : undefined}
-                          rel={item.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-gray-800 hover:text-purple-600 transition-colors break-words group/link"
-                        >
-                          {item.value}
-                          <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 -translate-x-1 group-hover/link:translate-x-0 transition-all" />
-                        </a>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
+                  <span className="hidden sm:flex ml-auto tabular-nums text-xs font-bold text-neutral-300 select-none">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Websites Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-4 tracking-wider uppercase">
-              <Globe className="w-3 h-3" />
-              Our Websites
+      {/* Ecosystem — dark band, list not grid of mini-cards */}
+      <section className="relative py-16 md:py-24 bg-[#111016] text-white overflow-hidden">
+        <div aria-hidden className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-10 md:mb-14">
+            <div className="flex-1">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300/90 mb-2">Websites</p>
+              <h2 className={`${display.className} text-3xl sm:text-4xl text-white`}>Every product, one front door each.</h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Explore the GSG ecosystem</h2>
-            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
-              Five dedicated websites, one trusted brand. Tap any service to visit it directly.
+            <p className="lg:max-w-sm text-sm text-neutral-400 leading-relaxed">
+              These domains are the live entry points into our stack — goods, logistics, marketplace, food, and more.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-24">
-            {websiteUnits.map((unit, index) => (
-              <motion.a
-                key={unit.title}
-                href={unit.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="group relative block p-5 rounded-2xl bg-white border border-gray-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-100/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-              >
-                <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-purple-50/0 via-purple-50/0 to-purple-50/0 group-hover:from-purple-50/40 group-hover:to-fuchsia-50/40 transition-all duration-500" />
-
-                <div className="relative">
-                  <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 mb-4 group-hover:from-purple-600 group-hover:to-fuchsia-600 group-hover:text-white transition-all duration-300">
-                    <unit.icon className="w-5 h-5" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-sm font-bold text-gray-900 mb-1 tracking-tight leading-tight">{unit.title}</h3>
-                  <p className="text-xs text-gray-500 group-hover:text-purple-700 transition-colors break-all font-medium">{unit.domain}</p>
-
-                  <div className="mt-4 pt-3 border-t border-gray-100/80 flex items-center justify-between text-[10px] font-bold text-gray-400 group-hover:text-purple-700 transition-colors uppercase tracking-widest">
-                    <span>Visit</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </motion.a>
-            ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Live Calls Support Hours</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                We're available to assist you via phone during these dedicated hours.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {supportHours.map((block, index) => (
-                <Card key={block.title} className="border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden bg-white group">
-                  <div className="h-2 w-full bg-gradient-to-r from-purple-400 to-purple-700 opacity-50 group-hover:opacity-100 transition-opacity" />
-                  <CardHeader className="pb-6 pt-8 px-8">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 flex items-center justify-center bg-purple-50 text-purple-600 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        <Clock className="w-6 h-6" />
-                      </div>
-                      <CardTitle className="text-2xl text-gray-900 font-bold">{block.title}</CardTitle>
-                    </div>
-                    {block.phones && block.phones.length > 0 && (
-                      <div className="space-y-3 mt-4">
-                        {block.phones.map((phone) => (
-                          <div key={phone} className="flex items-center gap-3 text-gray-700 font-medium bg-gray-50/50 px-4 py-2.5 rounded-lg border border-gray-100">
-                            <Phone className="w-4 h-4 text-purple-500" />
-                            {phone}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    {block.phone && (
-                      <div className="flex items-center gap-3 text-gray-700 font-medium mt-4 bg-gray-50/50 px-4 py-2.5 rounded-lg border border-gray-100">
-                        <Phone className="w-4 h-4 text-purple-500" />
-                        {block.phone}
-                      </div>
-                    )}
-                  </CardHeader>
-                  <CardContent className="px-8 pb-8">
-                    <div className="space-y-3">
-                      {block.schedule.map((item) => (
-                        <div key={item.days} className="flex justify-between items-center py-3.5 border-b border-gray-50 last:border-0 last:pb-0">
-                          <span className="font-medium text-gray-600">{item.days}</span>
-                          <span className="text-purple-700 font-semibold bg-purple-50 px-3 py-1 rounded-md text-sm">{item.hours}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-4 tracking-wider uppercase">
-                <Mail className="w-3 h-3" />
-                Write to us
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Send us a message</h2>
-              <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
-                Prefer to write? Tell us how we can help and a real human will get back to you within 24 hours.
-              </p>
-            </div>
-
-            <div className="relative max-w-4xl mx-auto">
-              <div aria-hidden className="absolute -inset-4 bg-gradient-to-br from-purple-200/40 via-fuchsia-200/30 to-purple-200/40 blur-3xl rounded-[3rem] -z-10" />
-
-              <div className="grid grid-cols-1 lg:grid-cols-5 rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-2xl shadow-purple-900/10">
-                {/* Left context panel */}
-                <div className="lg:col-span-2 relative bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 p-8 sm:p-10 text-white overflow-hidden">
-                  <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
-                  <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl" />
-
-                  <div className="relative h-full flex flex-col">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-semibold w-fit mb-6">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Avg. response &lt; 24h
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl font-bold leading-tight mb-3">Let&apos;s talk.</h3>
-                    <p className="text-purple-100/90 text-sm leading-relaxed mb-8">
-                      Share a little context and our customer experience team will route your message to the right person.
-                    </p>
-
-                    <ul className="space-y-4 mt-auto">
-                      <li className="flex items-start gap-3 text-sm">
-                        <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                          <Mail className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-white">Email</p>
-                          <a href="mailto:info@gsgbrands.com.gh" className="text-purple-200 hover:text-white transition-colors break-all">
-                            info@gsgbrands.com.gh
-                          </a>
-                        </div>
-                      </li>
-                      <li className="flex items-start gap-3 text-sm">
-                        <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                          <Phone className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-white">Call</p>
-                          <a href="tel:+233246033792" className="text-purple-200 hover:text-white transition-colors block">+233 (0) 246 033 792</a>
-                          <a href="tel:+233579033792" className="text-purple-200 hover:text-white transition-colors block">+233 (0) 579 033 792</a>
-                        </div>
-                      </li>
-                    </ul>
+          <ul className="divide-y divide-white/[0.08] border border-white/[0.08] rounded-2xl overflow-hidden bg-white/[0.03]">
+            {websiteUnits.map((unit, index) => (
+              <motion.li
+                key={unit.title}
+                initial={{ opacity: 0, x: -8 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.04 }}
+              >
+                <a
+                  href={unit.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5 hover:bg-white/[0.05] transition-colors"
+                >
+                  <span
+                    className={`hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${websiteStripeClasses[index]} shadow-lg`}
+                  >
+                    <unit.icon className="w-[18px] h-[18px] text-white" strokeWidth={2} />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-white tracking-tight truncate sm:whitespace-normal">{unit.title}</p>
+                    <p className="font-mono text-[12px] sm:text-[13px] text-purple-200/70 truncate">{unit.domain}</p>
                   </div>
+                  <span className="text-neutral-500 text-xs tabular-nums hidden sm:inline">{String(index + 1).padStart(2, '0')}</span>
+                  <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors shrink-0" />
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+
+          <p className="mt-8 text-center text-sm text-neutral-500">
+            Looking for FAQs?{' '}
+            <Link href="/ask-gsg-brands" className="text-purple-300 hover:text-purple-100 underline underline-offset-4">
+              Ask GSG Brands
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Hours — compact “spec sheet” */}
+      <section className="py-16 md:py-24 bg-[#e8e4dc] border-t border-neutral-900/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className={`${display.className} text-3xl sm:text-4xl text-neutral-950 mb-10`}>Phone windows</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {supportHours.map((block, index) => (
+              <motion.div
+                key={block.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className="rounded-2xl border border-neutral-900/12 bg-[#f3f1ed] p-6 sm:p-8 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-baseline justify-between gap-4 mb-6">
+                  <h3 className="text-xl font-bold text-neutral-900">{block.title}</h3>
+                  <Clock className="w-5 h-5 text-neutral-400 shrink-0" />
                 </div>
-
-                {/* Form panel */}
-                <div className="lg:col-span-3 p-8 sm:p-10 lg:p-12">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Full Name</label>
-                        <Input
-                          type="text"
-                          placeholder="Akosua Mensah"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          required
-                          className="bg-gray-50 border-0 ring-1 ring-gray-200 focus-visible:ring-2 focus-visible:ring-purple-500 h-12 text-sm rounded-xl px-4 transition-all hover:bg-gray-100/60"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Email Address</label>
-                        <Input
-                          type="email"
-                          placeholder="you@example.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          required
-                          className="bg-gray-50 border-0 ring-1 ring-gray-200 focus-visible:ring-2 focus-visible:ring-purple-500 h-12 text-sm rounded-xl px-4 transition-all hover:bg-gray-100/60"
-                        />
-                      </div>
+                {(block.phones && block.phones.length > 0 ? block.phones : block.phone ? [block.phone] : []).map((p) => (
+                  <a
+                    key={p}
+                    href={`tel:${p.replace(/\D/g, '')}`}
+                    className="mb-4 flex items-center gap-2 font-mono text-sm font-medium text-neutral-800 hover:text-purple-900 w-fit"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    {p}
+                  </a>
+                ))}
+                <div className="mt-4 space-y-0 border-t border-neutral-900/10">
+                  {block.schedule.map((row) => (
+                    <div
+                      key={row.days}
+                      className="flex justify-between gap-4 py-3 border-b border-neutral-900/[0.06] last:border-0 text-sm"
+                    >
+                      <span className="text-neutral-600">{row.days}</span>
+                      <span className="font-mono tabular-nums text-neutral-900 font-medium">{row.hours}</span>
                     </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Phone Number</label>
-                      <Input
-                        type="tel"
-                        placeholder="+233 (0) XXX XXX XXX"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        required
-                        className="bg-gray-50 border-0 ring-1 ring-gray-200 focus-visible:ring-2 focus-visible:ring-purple-500 h-12 text-sm rounded-xl px-4 transition-all hover:bg-gray-100/60"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-gray-500">How can we help?</label>
-                      <Textarea
-                        placeholder="Tell us a bit about what you need..."
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        required
-                        rows={5}
-                        className="bg-gray-50 border-0 ring-1 ring-gray-200 focus-visible:ring-2 focus-visible:ring-purple-500 text-sm resize-none p-4 rounded-xl transition-all hover:bg-gray-100/60"
-                      />
-                    </div>
-
-                    <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                      <p className="text-xs text-gray-400 flex items-center gap-1.5">
-                        <Shield className="w-3.5 h-3.5 text-purple-500" />
-                        Your information is private and secure.
-                      </p>
-                      <Button type="submit" className="w-full sm:w-auto h-12 px-7 gap-2 bg-purple-700 hover:bg-purple-800 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-purple-700/30 hover:shadow-purple-700/50 hover:-translate-y-0.5">
-                        Send Message
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </form>
+                  ))}
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact form — minimal, high contrast */}
+      <section id="contact" className="scroll-mt-24 py-16 md:py-28 bg-[#f3f1ed] border-t border-neutral-900/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-900/80 mb-2">Contact</p>
+          <h2 className={`${display.className} text-3xl sm:text-4xl text-neutral-950 mb-3`}>Send a note.</h2>
+          <p className="text-neutral-600 mb-10 text-[17px] leading-relaxed">
+            Tell us which service you mean and what you need — we route it internally so you don’t get bounced between
+            inboxes.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Name</label>
+                <Input
+                  type="text"
+                  placeholder="Full name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="h-12 rounded-none border-neutral-900/15 bg-[#faf8f5] focus-visible:ring-purple-900/40"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Email</label>
+                <Input
+                  type="email"
+                  placeholder="you@domain.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="h-12 rounded-none border-neutral-900/15 bg-[#faf8f5] focus-visible:ring-purple-900/40"
+                />
               </div>
             </div>
-          </motion.div>
+            <div className="space-y-2">
+              <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Phone</label>
+              <Input
+                type="tel"
+                placeholder="+233 …"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+                className="h-12 rounded-none border-neutral-900/15 bg-[#faf8f5] focus-visible:ring-purple-900/40"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Message</label>
+              <Textarea
+                placeholder="What happened, which product, and what outcome you need."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+                rows={6}
+                className="rounded-none border-neutral-900/15 bg-[#faf8f5] focus-visible:ring-purple-900/40 resize-y min-h-[140px]"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pt-2">
+              <p className="text-xs text-neutral-500 leading-relaxed max-w-xs">
+                Demo form — connects to toast only. Swap in your CRM or email API when ready.
+              </p>
+              <Button
+                type="submit"
+                className="w-full sm:w-auto justify-center h-12 rounded-none px-8 bg-neutral-950 hover:bg-neutral-800 text-white font-semibold gap-2 sm:min-w-[180px]"
+              >
+                Submit
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
+  );
+}
+
+function ArrowDownIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

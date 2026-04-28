@@ -20,11 +20,11 @@ export default function GsgBrandsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-25">
+      <section className="relative bg-black text-white py-24 overflow-hidden">
+        <div className="absolute inset-0">
           <img src="/images/affiliates-entrepreneurs.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -32,8 +32,8 @@ export default function GsgBrandsPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold mb-6">GSG Brands Directory</h1>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 px-1">GSG Brands Directory</h1>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-200 max-w-3xl mx-auto px-1">
               Explore our comprehensive ecosystem of services designed to make your life easier, save you time, and deliver exceptional value.
             </p>
           </motion.div>

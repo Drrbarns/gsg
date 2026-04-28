@@ -11,14 +11,14 @@ export default function StreetCuisinePage() {
         <main className="min-h-screen bg-white">
             {/* Hero Section */}
             <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-black text-white">
-                <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0">
                     <img
                         src="/images/streetcuisine-chef.png"
                         alt="Street Cuisine Hero"
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-black/30"></div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                     <motion.div
@@ -32,11 +32,11 @@ export default function StreetCuisinePage() {
                                 Authentic & Fresh
                             </span>
                         </div>
-                        <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
                             StreetCuisine <br />
                             <span className="text-orange-500">By GSG</span>
                         </h1>
-                        <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
+                        <p className="text-base sm:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
                             Experience the vibrant flavors of Ghana delivered to your doorstep. We partner with the best local vendors to bring you authentic, hygienic, and delicious street food.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">

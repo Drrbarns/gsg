@@ -14,10 +14,10 @@ export default function GsgLogo({ className = '', light = false }: { className?:
         <div className="absolute inset-0 bg-primary rounded-full blur-sm opacity-50"></div>
         <div className="relative bg-primary rounded-full px-5 py-2 border-2 border-white shadow-lg">
           <div className="absolute inset-0 rounded-full border-2 border-white/40" style={{ margin: '3px' }}></div>
-          <span className="text-white font-bold text-xl tracking-wider">GSG</span>
+          <span className="text-white font-bold text-lg sm:text-xl tracking-wider">GSG</span>
         </div>
       </div>
-      <span className={`text-xl font-bold ${light ? 'text-white' : 'text-foreground'}`}>BRANDS</span>
+      <span className={`text-lg sm:text-xl font-bold ${light ? 'text-white' : 'text-foreground'}`}>BRANDS</span>
     </motion.div>
   );
 }

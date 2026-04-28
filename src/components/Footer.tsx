@@ -141,7 +141,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+                    className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
                   >
                     <i className={`${social.icon} text-base`} />
                   </a>

@@ -22,12 +22,10 @@ export default function NewsMediaPage() {
   return (
     <main className="min-h-screen bg-gray-50/30">
       <section className="relative bg-black text-white pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0">
           <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
-        <div aria-hidden className="pointer-events-none absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-24 w-[32rem] h-[32rem] rounded-full bg-purple-400/20 blur-3xl" />
+        <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -35,8 +33,8 @@ export default function NewsMediaPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6 tracking-tight">News & Media</h1>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto leading-relaxed">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight px-1">News & Media</h1>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto leading-relaxed px-1">
               Stay updated with the latest news, announcements, and insights from GSG Brands.
             </p>
           </motion.div>

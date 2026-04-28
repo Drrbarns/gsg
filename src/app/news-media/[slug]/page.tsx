@@ -94,7 +94,7 @@ export default function NewsArticlePage() {
             </div>
 
             {/* Typography Container */}
-            <div className="bg-white rounded-3xl p-8 sm:p-12 md:p-16 shadow-sm border border-gray-100 mx-auto max-w-3xl">
+            <div className="bg-white rounded-3xl p-5 sm:p-8 md:p-12 lg:p-16 shadow-sm border border-gray-100 mx-auto max-w-3xl">
               <div
                 className="prose prose-lg sm:prose-xl prose-purple max-w-none text-gray-600 prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-purple-600 prose-a:font-semibold hover:prose-a:text-purple-800 prose-li:marker:text-purple-500"
                 dangerouslySetInnerHTML={{ __html: article.content || '' }}

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle, Send, Phone, Mail, Headphones } from 'lucide-react';
@@ -11,10 +12,25 @@ import { businessUnits, features, newsArticles } from '@/lib/data';
 import { NEWS_FALLBACK_IMAGE } from '@/lib/newsFallbackImage';
 
 export default function Home() {
+  const pillarsRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress: pillarsScroll } = useScroll({
+    target: pillarsRef,
+    offset: ['start end', 'end start'],
+  });
+  const pillarsBgY = useTransform(pillarsScroll, [0, 1], ['-14%', '14%']);
+
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: ctaScroll } = useScroll({
+    target: ctaRef,
+    offset: ['start end', 'end start'],
+  });
+  const ctaBgY = useTransform(ctaScroll, [0, 1], ['-12%', '12%']);
+
   return (
     <main className="min-h-screen">
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-50">
+        <div className="absolute inset-0">
           <Image
             src="/images/hero-market-ghana.png"
             alt="GSG Brands Hero"
@@ -23,7 +39,7 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 w-full">
           <motion.div
@@ -38,7 +54,7 @@ export default function Home() {
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Your Trusted Partner for Everyday Needs
             </h1>
-            <p className="text-base sm:text-xl text-purple-100 mb-8 sm:mb-10 leading-relaxed">
+            <p className="text-base sm:text-xl text-neutral-200 mb-8 sm:mb-10 leading-relaxed">
               GSG Brands brings together Convenience Goods & More, personal shopping, secure marketplace, cuisine delivery, and courier services—all designed to save you time and money while delivering exceptional value.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -67,7 +83,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Our Business Units</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Business Units</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our comprehensive range of services designed to meet all your daily needs
             </p>
@@ -117,21 +133,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-24 bg-white overflow-hidden">
-        {/* 2026-style ambient background */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-tr from-purple-100/60 via-fuchsia-50 to-transparent blur-3xl rounded-full" />
-          <div
-            className="absolute inset-0 opacity-[0.03]"
+      <section
+        ref={pillarsRef}
+        className="relative py-24 overflow-hidden bg-neutral-950"
+      >
+        <div aria-hidden className="absolute inset-0 z-0 overflow-hidden">
+          <motion.div
+            className="absolute left-0 right-0 w-full will-change-transform"
             style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.6) 1px, transparent 0)',
-              backgroundSize: '32px 32px',
+              top: '-18%',
+              height: '136%',
+              y: prefersReducedMotion ? 0 : pillarsBgY,
             }}
-          />
+          >
+            <Image
+              src="/images/convenience-goods-family.png"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              quality={80}
+            />
+          </motion.div>
+          <div className="absolute inset-0 z-[1] bg-black/30" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,14 +166,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-5 tracking-wider uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-white mb-5 tracking-wider uppercase backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-300" />
               Why GSG Brands
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-5 tracking-tight bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-5 tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] leading-tight">
               Built for the way you live today
             </h2>
-            <p className="text-lg text-gray-500 leading-relaxed">
+            <p className="text-lg text-white/85 leading-relaxed drop-shadow-[0_1px_12px_rgba(0,0,0,0.25)]">
               Four pillars that define every interaction—engineered to save your time, protect your money, and deliver more value.
             </p>
           </motion.div>
@@ -222,7 +249,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Latest News & Updates</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Latest News & Updates</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Stay informed about our latest developments and announcements
             </p>
@@ -286,16 +313,35 @@ export default function Home() {
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
+            ref={ctaRef}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-xl shadow-purple-900/20"
+            className="relative rounded-3xl overflow-hidden shadow-xl shadow-purple-900/25 ring-1 ring-white/10"
           >
-            <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-fuchsia-500/20 blur-3xl" />
-            <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-purple-400/15 blur-3xl" />
+            <div aria-hidden className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
+              <motion.div
+                className="absolute left-0 right-0 w-full will-change-transform"
+                style={{
+                  top: '-16%',
+                  height: '132%',
+                  y: prefersReducedMotion ? 0 : ctaBgY,
+                }}
+              >
+                <Image
+                  src="/images/customer-experience-agent.png"
+                  alt=""
+                  fill
+                  className="object-cover object-[center_30%]"
+                  sizes="(max-width: 1280px) 100vw, 1200px"
+                  quality={82}
+                />
+              </motion.div>
+              <div className="absolute inset-0 z-[1] bg-black/30" />
+            </div>
 
-            <div className="relative px-6 py-12 sm:px-12 sm:py-14 lg:py-16">
+            <div className="relative z-10 px-6 py-12 sm:px-12 sm:py-14 lg:py-16">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 mb-10">
                 <div className="max-w-xl">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/90 mb-5">
@@ -305,7 +351,7 @@ export default function Home() {
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
                     We&apos;re here to help.
                   </h2>
-                  <p className="mt-4 text-base sm:text-lg text-purple-100/90 max-w-md leading-relaxed">
+                  <p className="mt-4 text-base sm:text-lg text-white/90 max-w-md leading-relaxed drop-shadow-sm">
                     Reach our team through your preferred channel for fast, reliable support across all GSG Brands services.
                   </p>
                 </div>
@@ -319,7 +365,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
                   { name: 'WhatsApp', handle: '+233 246 033 792', href: 'https://wa.me/233246033792', icon: MessageCircle },
                   { name: 'Telegram', handle: '@gsgbrandsgh', href: 'https://t.me/gsgbrandsgh', icon: Send },
@@ -344,7 +390,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-center gap-2 text-xs text-purple-200/80">
+              <div className="mt-8 pt-6 border-t border-white/15 flex items-center justify-center gap-2 text-xs text-white/75">
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10">
                   <Phone className="w-2.5 h-2.5" />
                 </span>

@@ -11,32 +11,32 @@ export default function CourierDeliveryPage() {
         <main className="min-h-screen bg-white">
             {/* Hero Section */}
             <section className="relative min-h-[70vh] flex items-center bg-black text-white overflow-hidden">
-                <div className="absolute inset-0 opacity-35">
+                <div className="absolute inset-0">
                     <img
                         src="/images/courier-delivery-rider.png"
                         alt="Delivery Hero"
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
+                <div className="absolute inset-0 bg-black/30"></div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col md:flex-row items-center gap-12">
-                    <div className="max-w-2xl bg-black/60 p-12 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl">
-                        <h1 className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-none">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full min-w-0">
+                    <div className="max-w-2xl w-full min-w-0 bg-black/60 p-6 sm:p-8 md:p-12 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl">
+                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-none">
                             Fast, Reliable <br />
                             <span className="text-blue-400">Delivery</span>
                         </h1>
-                        <p className="text-xl text-blue-100 mb-8 max-w-lg leading-relaxed">
+                        <p className="text-base sm:text-xl text-blue-100 mb-8 max-w-lg leading-relaxed">
                             We move your packages with precision and speed across Ghana. From documents to bulk cargo, trust GSG Courier.
                         </p>
 
-                        <div className="flex bg-white rounded-xl overflow-hidden p-2 shadow-lg max-w-md">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch bg-white rounded-xl overflow-hidden p-2 shadow-lg max-w-md w-full">
                             <input
                                 type="text"
                                 placeholder="Enter Tracking ID..."
-                                className="flex-1 px-4 py-3 outline-none text-gray-800 placeholder:text-gray-400 font-medium"
+                                className="min-w-0 flex-1 px-4 py-3 outline-none text-gray-800 placeholder:text-gray-400 font-medium rounded-lg sm:rounded-none"
                             />
-                            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white h-full px-6 font-bold">
+                            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white h-12 sm:h-auto sm:px-6 font-bold shrink-0 justify-center rounded-lg sm:rounded-none">
                                 Track
                             </Button>
                         </div>
