@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Send, Mail, Clock, Globe } from 'lucide-react';
+import { MessageCircle, Send, Mail, Clock, Globe, Phone } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -105,42 +105,51 @@ export default function CustomerExperiencePage() {
 
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {contactMethods.map((method, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {contactMethods.map((method, index) => {
+              let iconBg = "bg-purple-100 text-purple-600 group-hover:bg-purple-600 group-hover:text-white";
+              if (method.title === 'WhatsApp') {
+                iconBg = "bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white";
+              } else if (method.title === 'Telegram') {
+                iconBg = "bg-sky-100 text-sky-600 group-hover:bg-sky-500 group-hover:text-white";
+              } else if (method.title === 'Email') {
+                iconBg = "bg-amber-100 text-amber-600 group-hover:bg-amber-500 group-hover:text-white";
+              }
+
+              return (
               <motion.div
                 key={method.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group h-full"
               >
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardHeader>
-                    <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 rounded-full mb-4">
-                      <method.icon className="w-6 h-6 text-white" />
+                <Card className="h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 shadow-sm overflow-hidden flex flex-col bg-white">
+                  <CardHeader className="pb-4">
+                    <div className={`w-14 h-14 flex items-center justify-center rounded-2xl mb-4 transition-colors duration-300 ${iconBg}`}>
+                      <method.icon className="w-7 h-7" />
                     </div>
-                    <CardTitle className="text-xl">{method.title}</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-gray-900">{method.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {method.items.map((item) => (
-                        <div key={item.label}>
-                          <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm font-medium text-primary hover:underline cursor-pointer"
-                          >
-                            {item.value}
-                          </a>
-                        </div>
-                      ))}
-                    </div>
+                  <CardContent className="flex-1 flex flex-col gap-5 pt-2">
+                    {method.items.map((item) => (
+                      <div key={item.label}>
+                        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{item.label}</p>
+                        <a
+                          href={item.link}
+                          target={item.link.startsWith('http') ? "_blank" : undefined}
+                          rel={item.link.startsWith('http') ? "noopener noreferrer" : undefined}
+                          className="inline-block text-[15px] font-medium text-gray-700 hover:text-purple-600 transition-colors break-words"
+                        >
+                          {item.value}
+                        </a>
+                      </div>
+                    ))}
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            )})}
           </div>
 
           <motion.div
@@ -148,36 +157,48 @@ export default function CustomerExperiencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-24"
           >
-            <h2 className="text-3xl font-bold text-center mb-12">Live Calls Support Hours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Live Calls Support Hours</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                We're available to assist you via phone during these dedicated hours.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {supportHours.map((block, index) => (
-                <Card key={block.title} className="border-2">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 rounded-full">
-                        <Clock className="w-5 h-5 text-white" />
+                <Card key={block.title} className="border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden bg-white group">
+                  <div className="h-2 w-full bg-gradient-to-r from-purple-400 to-purple-700 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <CardHeader className="pb-6 pt-8 px-8">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 flex items-center justify-center bg-purple-50 text-purple-600 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                        <Clock className="w-6 h-6" />
                       </div>
-                      <CardTitle className="text-2xl">{block.title}</CardTitle>
+                      <CardTitle className="text-2xl text-gray-900 font-bold">{block.title}</CardTitle>
                     </div>
                     {block.phones && block.phones.length > 0 && (
-                      <div className="space-y-1">
+                      <div className="space-y-3 mt-4">
                         {block.phones.map((phone) => (
-                          <CardDescription key={phone} className="text-base font-medium text-primary">
+                          <div key={phone} className="flex items-center gap-3 text-gray-700 font-medium bg-gray-50/50 px-4 py-2.5 rounded-lg border border-gray-100">
+                            <Phone className="w-4 h-4 text-purple-500" />
                             {phone}
-                          </CardDescription>
+                          </div>
                         ))}
                       </div>
                     )}
-                    {block.phone && <CardDescription className="text-base font-medium text-primary">{block.phone}</CardDescription>}
+                    {block.phone && (
+                      <div className="flex items-center gap-3 text-gray-700 font-medium mt-4 bg-gray-50/50 px-4 py-2.5 rounded-lg border border-gray-100">
+                        <Phone className="w-4 h-4 text-purple-500" />
+                        {block.phone}
+                      </div>
+                    )}
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
+                  <CardContent className="px-8 pb-8">
+                    <div className="space-y-3">
                       {block.schedule.map((item) => (
-                        <div key={item.days} className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                          <span className="font-medium text-gray-700">{item.days}</span>
-                          <span className="text-primary font-semibold">{item.hours}</span>
+                        <div key={item.days} className="flex justify-between items-center py-3.5 border-b border-gray-50 last:border-0 last:pb-0">
+                          <span className="font-medium text-gray-600">{item.days}</span>
+                          <span className="text-purple-700 font-semibold bg-purple-50 px-3 py-1 rounded-md text-sm">{item.hours}</span>
                         </div>
                       ))}
                     </div>
@@ -193,58 +214,66 @@ export default function CustomerExperiencePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="max-w-2xl mx-auto border-2">
-              <CardHeader>
-                <CardTitle className="text-3xl text-center">Send Us a Message</CardTitle>
-                <CardDescription className="text-center text-base">
-                  Fill out the form below and we will get back to you as soon as possible
+            <Card className="max-w-3xl mx-auto border border-gray-100 shadow-2xl shadow-purple-900/5 bg-white overflow-hidden rounded-2xl">
+              <div className="bg-gray-50/80 p-8 sm:p-12 border-b border-gray-100 text-center">
+                <CardTitle className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Send Us a Message</CardTitle>
+                <CardDescription className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto">
+                  Prefer to write to us? Fill out the form below and our team will get back to you via email or phone within 24 hours.
                 </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Name</label>
-                    <Input
-                      type="text"
-                      placeholder="Your full name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
+              </div>
+              <CardContent className="p-8 sm:p-12">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="space-y-2.5">
+                      <label className="text-sm font-semibold text-gray-700">Full Name</label>
+                      <Input
+                        type="text"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                        className="bg-gray-50/50 border-gray-200 focus-visible:ring-purple-500 h-12 text-base transition-colors hover:bg-gray-50"
+                      />
+                    </div>
+                    <div className="space-y-2.5">
+                      <label className="text-sm font-semibold text-gray-700">Email Address</label>
+                      <Input
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                        className="bg-gray-50/50 border-gray-200 focus-visible:ring-purple-500 h-12 text-base transition-colors hover:bg-gray-50"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <Input
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
+                  <div className="space-y-2.5">
+                    <label className="text-sm font-semibold text-gray-700">Phone Number</label>
                     <Input
                       type="tel"
-                      placeholder="+233 XXX XXX XXX"
+                      placeholder="+233 (0) XXX XXX XXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       required
+                      className="bg-gray-50/50 border-gray-200 focus-visible:ring-purple-500 h-12 text-base transition-colors hover:bg-gray-50"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Message</label>
+                  <div className="space-y-2.5">
+                    <label className="text-sm font-semibold text-gray-700">How can we help?</label>
                     <Textarea
-                      placeholder="How can we help you?"
+                      placeholder="Please describe your inquiry or issue in detail..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                       rows={5}
+                      className="bg-gray-50/50 border-gray-200 focus-visible:ring-purple-500 text-base resize-none pt-4 transition-colors hover:bg-gray-50"
                     />
                   </div>
-                  <Button type="submit" className="w-full" size="lg">
-                    Send Message
-                  </Button>
+                  <div className="pt-4 text-center sm:text-left">
+                    <Button type="submit" className="w-full sm:w-auto px-10 h-14 bg-purple-700 hover:bg-purple-800 text-white font-medium text-base rounded-xl transition-all shadow-lg shadow-purple-700/20 hover:shadow-purple-700/40 hover:-translate-y-0.5">
+                      Send Message
+                    </Button>
+                  </div>
                 </form>
               </CardContent>
             </Card>

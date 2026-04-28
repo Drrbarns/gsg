@@ -13,7 +13,7 @@ import { NEWS_FALLBACK_IMAGE } from '@/lib/newsFallbackImage';
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-black">
         <div className="absolute inset-0 opacity-50">
           <Image
             src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1920&auto=format&fit=crop"
@@ -23,7 +23,7 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-purple-900/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 w-full">
           <motion.div

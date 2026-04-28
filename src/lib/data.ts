@@ -66,18 +66,26 @@ export const newsArticles = [
         date: '2024-01-15',
         excerpt: 'We are thrilled to announce the expansion of our service coverage to include more regions across Ghana, bringing our comprehensive ecosystem of services to even more communities.',
         content: `
-      <p>We are thrilled to announce the expansion of our service coverage to include more regions across Ghana, bringing our comprehensive ecosystem of services to even more communities.</p>
-      <h2>Expanding Our Reach</h2>
-      <p>This expansion marks a significant milestone in our mission to make quality services accessible to all Ghanaians. We have established new logistics hubs in Kumasi and Takoradi to ensure faster delivery times and better service reliability.</p>
-      <h2>What This Means for You</h2>
+      <p class="lead">We are thrilled to announce a major milestone in our journey: the expansion of GSG Brands' service coverage to include multiple new regions across Ghana. This move brings our comprehensive ecosystem of services—from Convenience Goods to Courier logistics—directly to the doorsteps of even more communities.</p>
+      
+      <h2>Expanding Our Reach to Meet Your Needs</h2>
+      <p>This strategic expansion marks a significant step forward in our core mission: making high-quality, reliable, and affordable services accessible to all Ghanaians. As part of this rollout, we have successfully established cutting-edge logistics hubs in both <strong>Kumasi</strong> and <strong>Takoradi</strong>. These new centers are designed to drastically reduce delivery times, enhance service reliability, and create hundreds of local jobs.</p>
+      
+      <blockquote>"Our vision has always been to bridge the gap between quality service and accessibility. By expanding to these key regions, we are not just growing our footprint; we are empowering local economies and saving our customers valuable time and money." — The GSG Brands Leadership Team</blockquote>
+
+      <h2>What This Means for Our Customers</h2>
+      <p>If you reside in our newly covered areas, here is what you can expect starting today:</p>
       <ul>
-        <li><strong>Faster Delivery:</strong> Reduced delivery times for customers in the new regions.</li>
-        <li><strong>Wider Availability:</strong> Access to our full range of products and services.</li>
-        <li><strong>Local Support:</strong> Dedicated customer support teams in key locations.</li>
+        <li><strong>Lightning-Fast Delivery:</strong> Experience significantly reduced wait times for all Convenience Goods and Courier services.</li>
+        <li><strong>Full Ecosystem Access:</strong> Gain immediate access to our complete range of products, including the highly anticipated StreetCuisine and our Sell-Safe Buy-Safe Marketplace.</li>
+        <li><strong>Dedicated Local Support:</strong> Enjoy peace of mind with customer support teams based right in your region, ready to assist you in real-time.</li>
       </ul>
-      <p>We are committed to continuing this growth and bringing GSG Brands to every corner of the country.</p>
+      
+      <h2>Looking Ahead</h2>
+      <p>We are incredibly grateful for the trust and loyalty our customers have shown us, which has made this rapid growth possible. However, this is just the beginning. We remain deeply committed to continuing this upward trajectory, with plans to bring the GSG Brands standard of excellence to every single corner of the country over the next 24 months.</p>
+      <p>Stay tuned for more updates as we continue to build a brighter, more connected Ghana.</p>
     `,
-        image: 'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-expansion.png',
     },
     {
         slug: 'new-partnership-local-vendors',
@@ -86,13 +94,25 @@ export const newsArticles = [
         date: '2024-01-10',
         excerpt: 'GSG Brands announces strategic partnerships with verified local vendors to enhance our Sell-Safe Buy-Safe Marketplace, offering customers more choices and better value.',
         content: `
-      <p>GSG Brands announces strategic partnerships with verified local vendors to enhance our Sell-Safe Buy-Safe Marketplace, offering customers more choices and better value.</p>
-      <h2>Empowering Local Businesses</h2>
-      <p>Our goal is to support local entrepreneurs by providing them with a platform to reach a wider audience. We have onboarded over 500 new vendors across various categories, including fashion, electronics, and home goods.</p>
-      <h2>Quality Assurance</h2>
-      <p>All new vendors undergo a rigorous verification process to ensure they meet our quality and service standards. This guarantees that our customers can shop with confidence.</p>
+      <p class="lead">In our ongoing effort to revolutionize digital commerce in Ghana, GSG Brands is proud to announce a series of strategic partnerships with top-tier, verified local vendors. This initiative is set to massively enhance our Sell-Safe Buy-Safe Marketplace.</p>
+      
+      <h2>Empowering Local Businesses, Empowering You</h2>
+      <p>Our ultimate goal has always been dual-purpose: to provide unparalleled value to our buyers while simultaneously supporting local entrepreneurs by giving them a robust, secure platform to reach a national audience. Over the past quarter, we have successfully onboarded over <strong>500 new vendors</strong> across a diverse array of categories, including cutting-edge electronics, high-quality fashion, and essential home goods.</p>
+      
+      <p>By bringing these vendors into the GSG ecosystem, we are effectively cutting out the middlemen. This means better profit margins for hard-working Ghanaian business owners and consistently lower prices for you, the consumer.</p>
+
+      <h2>Uncompromising Quality Assurance</h2>
+      <p>Growth cannot come at the expense of quality. That is why every single vendor joining the Sell-Safe Buy-Safe Marketplace undergoes a rigorous, multi-stage verification process.</p>
+      <ul>
+        <li><strong>Business Verification:</strong> We physically and legally verify the existence and legitimacy of the business.</li>
+        <li><strong>Product Quality Checks:</strong> Random sampling and quality control tests are conducted to ensure products match their descriptions.</li>
+        <li><strong>Service Standard Agreements:</strong> Vendors must commit to our strict Service Level Agreements (SLAs) regarding shipping times and customer communication.</li>
+      </ul>
+      
+      <h2>The Sell-Safe Buy-Safe Promise</h2>
+      <p>Whether you are purchasing a brand-new smartphone or bespoke traditional wear, our integrated payment gateway holds funds securely until the buyer confirms receipt and satisfaction. This zero-risk environment is the future of e-commerce in Africa, and we are proud to lead the charge.</p>
     `,
-        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32b7?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-partnership.png',
     },
     {
         slug: 'customer-satisfaction-reaches-98-percent',
@@ -101,13 +121,26 @@ export const newsArticles = [
         date: '2024-01-05',
         excerpt: 'Our commitment to excellence continues to deliver outstanding results as customer satisfaction ratings reach an impressive 98%, reflecting our dedication to quality service.',
         content: `
-      <p>Our commitment to excellence continues to deliver outstanding results as customer satisfaction ratings reach an impressive 98%, reflecting our dedication to quality service.</p>
-      <h2>A Testament to Our Team</h2>
-      <p>This achievement is a direct result of the hard work and dedication of our customer experience team. We have implemented new training programs and feedback loops to ensure we are always improving.</p>
-      <h2>Listening to Our Customers</h2>
-      <p>We actively listen to customer feedback and use it to drive our decision-making process. Thank you to all our customers for their trust and support.</p>
+      <p class="lead">Excellence is not an act, but a habit. Today, we are incredibly proud to announce that GSG Brands has officially achieved an all-time high customer satisfaction (CSAT) rating of <strong>98%</strong> across all our active business units.</p>
+      
+      <h2>A Testament to Our Dedicated Team</h2>
+      <p>This monumental achievement is a direct reflection of the relentless hard work, empathy, and dedication of our Customer Experience team and on-the-ground staff. From our delivery riders braving the traffic to our 24/7 support agents handling inquiries at 2:00 AM, every team member has played a crucial role.</p>
+      
+      <p>Over the last six months, we implemented several key initiatives that drove this metric upward:</p>
+      <ul>
+        <li><strong>Advanced Training Programs:</strong> Equipping our staff with better conflict resolution and empathetic communication skills.</li>
+        <li><strong>Streamlined Feedback Loops:</strong> Cutting the time it takes for customer feedback to reach the product development team by 80%.</li>
+        <li><strong>Proactive Issue Resolution:</strong> Our systems now flag potential delivery delays before the customer even notices, allowing our team to proactively reach out with solutions.</li>
+      </ul>
+
+      <h2>Listening to the Voices That Matter Most</h2>
+      <p>We actively listen to customer feedback through our multi-channel support system (WhatsApp, Telegram, Phone, and Email) and use this invaluable data to drive our high-level decision-making process.</p>
+      
+      <blockquote>"Achieving 98% is phenomenal, but our eyes are fixed on that remaining 2%. We will not rest until every single interaction with GSG Brands is perfect." — Head of Customer Experience</blockquote>
+      
+      <p>To all our customers: thank you. Your trust, your feedback, and your continuous support are the fuel that drives the GSG Brands engine. We promise to keep raising the bar.</p>
     `,
-        image: 'https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-satisfaction.png',
     },
     {
         slug: 'how-to-use-personal-shopper-service',
@@ -116,15 +149,27 @@ export const newsArticles = [
         date: '2023-12-28',
         excerpt: 'Learn how to leverage our Personal Shopper service to save time, compare prices effectively, and make informed purchasing decisions with expert assistance.',
         content: `
-      <p>Learn how to leverage our Personal Shopper service to save time, compare prices effectively, and make informed purchasing decisions with expert assistance.</p>
-      <h2>1. Define Your Needs</h2>
-      <p>Be as specific as possible about what you are looking for. Include details like brand, size, color, and budget.</p>
-      <h2>2. Connect with an Expert</h2>
-      <p>Our personal shoppers are experts in their fields. Don't hesitate to ask for recommendations or advice.</p>
-      <h2>3. Enjoy the Convenience</h2>
-      <p>Sit back and relax while we handle the sourcing, purchasing, and delivery of your items.</p>
+      <p class="lead">Navigating crowded markets or spending hours browsing online stores can be exhausting. That's exactly why we created the GSG Brands Personal Shopper service. Here is your ultimate guide to leveraging this premium service to save both time and money.</p>
+      
+      <h2>1. Define Your Needs with Precision</h2>
+      <p>The key to a perfect shopping experience is communication. When submitting a request, be as specific as possible. The more details you provide, the faster our shoppers can locate exactly what you need.</p>
+      <ul>
+        <li><strong>Specify Details:</strong> Include the brand, preferred size, exact color, and acceptable alternatives.</li>
+        <li><strong>Set a Clear Budget:</strong> Give us a budget range. Our shoppers are trained negotiators, especially in traditional markets like Makola or Adabrakah, and will always aim for the lower end of your budget without compromising quality.</li>
+        <li><strong>Deadline:</strong> Let us know when you need the item by so we can prioritize accordingly.</li>
+      </ul>
+      
+      <h2>2. Connect and Collaborate with an Expert</h2>
+      <p>Our personal shoppers are not just delivery personnel; they are local market experts. They know which stall has the freshest fish, which wholesale store offers the best bulk discounts, and how to spot a counterfeit product.</p>
+      <p>Don't hesitate to ask for recommendations. If you need a gift for a colleague but aren't sure what to get, simply describe the person and your budget, and let our experts curate a list of options for you to choose from.</p>
+      
+      <h2>3. The Power of Real-Time Updates</h2>
+      <p>While our shopper is in the field, they can send you real-time pictures of items, allowing you to make instant decisions from the comfort of your home or office. It's like being at the market, but without the heat and the crowds!</p>
+      
+      <h2>4. Sit Back and Enjoy the Convenience</h2>
+      <p>Once you've made your choices, we handle the rest. We negotiate the final price, securely package your items, and coordinate with our Courier unit to deliver everything straight to your door. Experience the ultimate convenience today.</p>
     `,
-        image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-shopper.png',
     },
     {
         slug: 'streetcuisine-launch-announcement',
@@ -133,13 +178,25 @@ export const newsArticles = [
         date: '2023-12-20',
         excerpt: 'Get ready for authentic Ghanaian street food delivered fresh to your doorstep. StreetCuisine By GSG is launching soon, bringing local flavors with quality assurance.',
         content: `
-      <p>Get ready for authentic Ghanaian street food delivered fresh to your doorstep. StreetCuisine By GSG is launching soon, bringing local flavors with quality assurance.</p>
+      <p class="lead">The aroma of perfectly spiced waakye, the sizzle of fresh kelewele, the comfort of a hot bowl of fufu—Ghanaian street food is an essential part of our culture. Very soon, you'll be able to enjoy it all without leaving your home with the launch of <strong>StreetCuisine By GSG</strong>.</p>
+      
       <h2>Authentic Flavors, Modern Convenience</h2>
-      <p>We are partnering with the best local food vendors to bring you your favorite dishes, prepared with care and delivered with speed.</p>
-      <h2>Hygiene First</h2>
-      <p>All our vendor partners undergo strict hygiene training and inspections to ensure your food is safe and delicious.</p>
+      <p>We know that the best food often doesn't come from fancy restaurants, but from the dedicated local vendors who have perfected their craft over generations. We are actively partnering with the highest-rated, most beloved street food vendors in your neighborhood.</p>
+      <p>Through the StreetCuisine platform, you can browse menus from multiple local vendors, place a single order, and have it delivered blazing fast while it's still piping hot.</p>
+      
+      <h2>Uncompromising Hygiene and Quality Standards</h2>
+      <p>We understand that while people love street food, hygiene is a common concern. That is exactly where GSG Brands steps in to make a difference.</p>
+      <ul>
+        <li><strong>Mandatory Training:</strong> All our vendor partners must undergo strict food safety and hygiene training before joining the platform.</li>
+        <li><strong>Regular Inspections:</strong> Our quality assurance team conducts regular, unannounced inspections of our partners' preparation areas.</li>
+        <li><strong>Premium Packaging:</strong> We provide our vendors with high-quality, eco-friendly, and secure packaging to ensure your food arrives exactly as it was prepared—safe and delicious.</li>
+      </ul>
+      
+      <h2>Empowering the Grassroots Economy</h2>
+      <p>By ordering through StreetCuisine, you aren't just getting a great meal; you are directly supporting the grassroots economy. We provide these micro-entrepreneurs with the digital tools and logistics network they need to scale their businesses exponentially.</p>
+      <p>Keep an eye on our social media channels for the official launch date in your area. Your favorite local flavors are about to get a major upgrade.</p>
     `,
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-cuisine.png',
     },
     {
         slug: 'secure-shopping-tips',
@@ -148,15 +205,31 @@ export const newsArticles = [
         date: '2023-12-15',
         excerpt: 'Stay safe while shopping online with these essential security tips. Learn how to identify verified sellers, protect your payment information, and shop with confidence.',
         content: `
-      <p>Stay safe while shopping online with these essential security tips. Learn how to identify verified sellers, protect your payment information, and shop with confidence.</p>
-      <h2>1. Shop from Trusted Sites</h2>
-      <p>Only shop on websites with a secure connection (https) and a good reputation.</p>
-      <h2>2. Verify Sellers</h2>
-      <p>Check ratings and reviews before making a purchase from a third-party seller.</p>
-      <h2>3. Protect Your Date</h2>
-      <p>Never share your password or financial information over email or social media.</p>
+      <p class="lead">The convenience of online shopping has revolutionized how we buy goods in Ghana. However, this digital shift also brings new risks. At GSG Brands, your security is our priority. Here are our top five expert tips to ensure you stay safe while shopping online.</p>
+      
+      <h2>1. Use Escrow Services (Like Sell-Safe Buy-Safe)</h2>
+      <p>The number one rule of online shopping, especially on social media platforms like Instagram or Facebook, is to never pay directly to a vendor's personal account before receiving the goods. Always insist on using an escrow-style service like the GSG Brands <strong>Sell-Safe Buy-Safe Marketplace</strong>. We hold your funds securely and only release them to the seller once you have received and approved the item.</p>
+      
+      <h2>2. Look for the Padlock (HTTPS)</h2>
+      <p>Before entering any payment information or personal details on a website, check the URL bar at the top of your browser. Make sure the website address begins with "https://" (the 's' stands for secure) and look for a small padlock icon. This indicates that your data is encrypted.</p>
+      
+      <h2>3. Verify the Seller's Reputation</h2>
+      <p>If you are buying from a third-party seller on a marketplace, do your homework:</p>
+      <ul>
+        <li><strong>Read Reviews:</strong> Look beyond the 5-star ratings. Read what customers actually say about the product quality and delivery times.</li>
+        <li><strong>Check Social Proof:</strong> Look at their social media presence. Are real people engaging with their posts?</li>
+        <li><strong>Beware of Unrealistic Prices:</strong> If an iPhone is being sold for 80% less than its market value, it is almost certainly a scam or a counterfeit product.</li>
+      </ul>
+      
+      <h2>4. Protect Your Financial Data</h2>
+      <p>Never share your mobile money PIN, bank card CVV (the 3 digits on the back), or passwords with anyone over email, phone, or direct message. Legitimate companies (including GSG Brands) will <strong>never</strong> ask you for this information.</p>
+      
+      <h2>5. Keep Your Devices Secure</h2>
+      <p>Ensure the phone or computer you use for shopping has up-to-date antivirus software and operating systems. Avoid making sensitive purchases while connected to public, unsecured Wi-Fi networks (like in cafes or malls), as hackers can easily intercept your data on these networks.</p>
+      
+      <p>By following these simple steps, you can enjoy all the benefits of online commerce with total peace of mind. Happy, safe shopping!</p>
     `,
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop',
+        image: '/news/news-secure.png',
     },
 ];
 
