@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Send, Mail, Clock, Globe, Phone } from 'lucide-react';
+import { MessageCircle, Send, Mail, Clock, Globe, Phone, ArrowRight, ShoppingBag, Users, Shield, MapPin, Utensils } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,21 +10,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import InfoBanner from '@/components/InfoBanner';
 
-const contactMethods = [
-  {
-    title: 'Websites',
-    icon: Globe,
-    items: [
-      { label: 'Goods', value: 'www.goods.gsgbrands.com.gh', link: 'https://goods.gsgbrands.com.gh' },
-      { label: 'Shopper', value: 'www.shopper.gsgbrands.com.gh', link: 'https://shopper.gsgbrands.com.gh' },
-      { label: 'Sell-Buy-Safe', value: 'www.sellbuysafe.gsgbrands.com.gh', link: 'https://sellbuysafe.gsgbrands.com.gh' },
-      { label: 'Courier', value: 'www.courier.gsgbrands.com.gh', link: 'https://courier.gsgbrands.com.gh' },
-      { label: 'Cuisine', value: 'www.cuisine.gsgbrands.com.gh', link: 'https://cuisine.gsgbrands.com.gh' },
-    ],
-  },
+const directContactMethods = [
   {
     title: 'WhatsApp',
     icon: MessageCircle,
+    accent: 'from-emerald-500 to-emerald-600',
+    accentSoft: 'bg-emerald-50 text-emerald-600',
     items: [
       { label: 'Main', value: '+233 246 033 792', link: 'https://wa.me/233246033792' },
       { label: 'Alternative', value: '+233 579 033 792', link: 'https://wa.me/233579033792' },
@@ -33,6 +24,8 @@ const contactMethods = [
   {
     title: 'Telegram',
     icon: Send,
+    accent: 'from-sky-500 to-sky-600',
+    accentSoft: 'bg-sky-50 text-sky-600',
     items: [
       { label: 'Channel', value: '@gsgbrandsgh', link: 'https://t.me/gsgbrandsgh' },
     ],
@@ -40,10 +33,20 @@ const contactMethods = [
   {
     title: 'Email',
     icon: Mail,
+    accent: 'from-amber-500 to-amber-600',
+    accentSoft: 'bg-amber-50 text-amber-600',
     items: [
       { label: 'General Inquiries', value: 'info@gsgbrands.com.gh', link: 'mailto:info@gsgbrands.com.gh' },
     ],
   },
+];
+
+const websiteUnits = [
+  { title: 'Convenience Goods & More', domain: 'goods.gsgbrands.com.gh', link: 'https://goods.gsgbrands.com.gh', icon: ShoppingBag },
+  { title: 'Personal Shopper', domain: 'shopper.gsgbrands.com.gh', link: 'https://shopper.gsgbrands.com.gh', icon: Users },
+  { title: 'Sell-Safe Buy-Safe', domain: 'sellbuysafe.gsgbrands.com.gh', link: 'https://sellbuysafe.gsgbrands.com.gh', icon: Shield },
+  { title: 'Courier', domain: 'courier.gsgbrands.com.gh', link: 'https://courier.gsgbrands.com.gh', icon: MapPin },
+  { title: 'StreetCuisine', domain: 'cuisine.gsgbrands.com.gh', link: 'https://cuisine.gsgbrands.com.gh', icon: Utensils },
 ];
 
 const supportHours = [
@@ -103,53 +106,117 @@ export default function CustomerExperiencePage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-20 bg-gradient-to-b from-gray-50/40 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-            {contactMethods.map((method, index) => {
-              let iconBg = "bg-purple-100 text-purple-600 group-hover:bg-purple-600 group-hover:text-white";
-              if (method.title === 'WhatsApp') {
-                iconBg = "bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white";
-              } else if (method.title === 'Telegram') {
-                iconBg = "bg-sky-100 text-sky-600 group-hover:bg-sky-500 group-hover:text-white";
-              } else if (method.title === 'Email') {
-                iconBg = "bg-amber-100 text-amber-600 group-hover:bg-amber-500 group-hover:text-white";
-              }
 
-              return (
+          {/* Direct Contact Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-4 tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Direct Channels
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Talk to us instantly</h2>
+            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
+              Pick your preferred channel below — our team is online and ready to respond.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            {directContactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="group h-full"
               >
-                <Card className="h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 shadow-sm overflow-hidden flex flex-col bg-white">
-                  <CardHeader className="pb-4">
-                    <div className={`w-14 h-14 flex items-center justify-center rounded-2xl mb-4 transition-colors duration-300 ${iconBg}`}>
-                      <method.icon className="w-7 h-7" />
+                <div className="relative h-full p-7 rounded-3xl bg-white border border-gray-100 hover:border-transparent group-hover:shadow-2xl group-hover:shadow-purple-200/30 transition-all duration-500 hover:-translate-y-1 flex flex-col overflow-hidden">
+                  <div aria-hidden className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${method.accent} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
+
+                  <div className="relative flex items-start justify-between mb-6">
+                    <div className={`w-14 h-14 flex items-center justify-center rounded-2xl ${method.accentSoft} group-hover:scale-110 transition-transform duration-300`}>
+                      <method.icon className="w-6 h-6" />
                     </div>
-                    <CardTitle className="text-2xl font-bold text-gray-900">{method.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col gap-5 pt-2">
+                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{`0${index + 1}`}</span>
+                  </div>
+
+                  <h3 className="relative text-xl font-bold text-gray-900 mb-5 tracking-tight">{method.title}</h3>
+
+                  <div className="relative space-y-4 flex-1">
                     {method.items.map((item) => (
                       <div key={item.label}>
-                        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{item.label}</p>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">{item.label}</p>
                         <a
                           href={item.link}
                           target={item.link.startsWith('http') ? "_blank" : undefined}
                           rel={item.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                          className="inline-block text-[15px] font-medium text-gray-700 hover:text-purple-600 transition-colors break-words"
+                          className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-gray-800 hover:text-purple-600 transition-colors break-words group/link"
                         >
                           {item.value}
+                          <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 -translate-x-1 group-hover/link:translate-x-0 transition-all" />
                         </a>
                       </div>
                     ))}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
-            )})}
+            ))}
+          </div>
+
+          {/* Websites Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-4 tracking-wider uppercase">
+              <Globe className="w-3 h-3" />
+              Our Websites
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Explore the GSG ecosystem</h2>
+            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
+              Five dedicated websites, one trusted brand. Tap any service to visit it directly.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-24">
+            {websiteUnits.map((unit, index) => (
+              <motion.a
+                key={unit.title}
+                href={unit.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="group relative block p-5 rounded-2xl bg-white border border-gray-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-100/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-purple-50/0 via-purple-50/0 to-purple-50/0 group-hover:from-purple-50/40 group-hover:to-fuchsia-50/40 transition-all duration-500" />
+
+                <div className="relative">
+                  <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 mb-4 group-hover:from-purple-600 group-hover:to-fuchsia-600 group-hover:text-white transition-all duration-300">
+                    <unit.icon className="w-5 h-5" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-900 mb-1 tracking-tight leading-tight">{unit.title}</h3>
+                  <p className="text-xs text-gray-500 group-hover:text-purple-700 transition-colors break-all font-medium">{unit.domain}</p>
+
+                  <div className="mt-4 pt-3 border-t border-gray-100/80 flex items-center justify-between text-[10px] font-bold text-gray-400 group-hover:text-purple-700 transition-colors uppercase tracking-widest">
+                    <span>Visit</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </div>
 
           <motion.div
