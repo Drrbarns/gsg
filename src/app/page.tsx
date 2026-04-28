@@ -16,7 +16,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-black">
         <div className="absolute inset-0 opacity-50">
           <Image
-            src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1920&auto=format&fit=crop"
+            src="/images/hero-market-ghana.png"
             alt="GSG Brands Hero"
             fill
             className="object-cover"
