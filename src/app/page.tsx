@@ -117,38 +117,98 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-gray-50/50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 bg-white overflow-hidden">
+        {/* 2026-style ambient background */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-tr from-purple-100/60 via-fuchsia-50 to-transparent blur-3xl rounded-full" />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.6) 1px, transparent 0)',
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold mb-4">Why Choose GSG Brands</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We are committed to delivering excellence in every interaction
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-5 tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+              Why GSG Brands
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-5 tracking-tight bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 bg-clip-text text-transparent leading-tight">
+              Built for the way you live today
+            </h2>
+            <p className="text-lg text-gray-500 leading-relaxed">
+              Four pillars that define every interaction—engineered to save your time, protect your money, and deliver more value.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group text-center"
-              >
-                <div className="w-16 h-16 flex items-center justify-center bg-purple-50 text-purple-600 rounded-2xl mx-auto mb-6 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-200">
-                  <feature.icon className="w-8 h-8 transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {features.map((feature, index) => {
+              const stats = ['100%', '< 24h', '30%+', '24/7'];
+              const statLabels = ['Verified', 'Avg. delivery', 'Avg. savings', 'Always on'];
+              return (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group relative"
+                >
+                  {/* Gradient border on hover */}
+                  <div aria-hidden className="absolute -inset-px rounded-3xl bg-gradient-to-br from-purple-400/0 via-fuchsia-400/0 to-purple-600/0 group-hover:from-purple-400/40 group-hover:via-fuchsia-400/40 group-hover:to-purple-600/40 transition-all duration-500 blur-sm" />
+
+                  <div className="relative h-full p-7 rounded-3xl bg-white border border-gray-100 hover:border-transparent group-hover:shadow-2xl group-hover:shadow-purple-200/40 transition-all duration-500 hover:-translate-y-1 flex flex-col overflow-hidden">
+                    {/* Subtle inner glow */}
+                    <div aria-hidden className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Icon + stat row */}
+                    <div className="relative flex items-start justify-between mb-6">
+                      <div className="relative">
+                        <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-600 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
+                        <div className="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 group-hover:from-purple-600 group-hover:to-fuchsia-600 group-hover:text-white transition-all duration-500">
+                          <feature.icon className="w-5 h-5" strokeWidth={2} />
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-gray-900 tracking-tight tabular-nums">
+                          {stats[index]}
+                        </div>
+                        <div className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                          {statLabels[index]}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="relative text-lg font-bold text-gray-900 mb-2 tracking-tight">
+                      {feature.title}
+                    </h3>
+                    <p className="relative text-sm text-gray-500 leading-relaxed flex-1">
+                      {feature.description}
+                    </p>
+
+                    {/* Hover indicator */}
+                    <div className="relative mt-6 pt-5 border-t border-gray-100/80 flex items-center text-xs font-semibold text-gray-400 group-hover:text-purple-700 transition-colors">
+                      <span className="tracking-wide uppercase">{`0${index + 1}`}</span>
+                      <span className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0 inline-flex items-center gap-1">
+                        Learn more
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
