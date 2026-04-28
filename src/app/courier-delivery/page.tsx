@@ -10,14 +10,15 @@ export default function CourierDeliveryPage() {
     return (
         <main className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center bg-purple-900 text-white overflow-hidden">
-                <div className="absolute inset-0 opacity-30">
+            <section className="relative min-h-[70vh] flex items-center bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 opacity-35">
                     <img
                         src="/images/courier-delivery-rider.png"
                         alt="Delivery Hero"
                         className="w-full h-full object-cover"
                     />
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col md:flex-row items-center gap-12">
                     <div className="max-w-2xl bg-black/60 p-12 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl">

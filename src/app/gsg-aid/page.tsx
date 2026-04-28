@@ -43,7 +43,7 @@ export default function GsgAidPage() {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/35"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <motion.div
@@ -228,7 +228,7 @@ export default function GsgAidPage() {
             <div className="absolute inset-0">
               <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-purple-900/90 to-purple-950/95"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/90"></div>
 
             <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
             <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl" />

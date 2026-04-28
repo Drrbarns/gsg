@@ -21,10 +21,11 @@ export default function NewsMediaPage() {
 
   return (
     <main className="min-h-screen bg-gray-50/30">
-      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white pt-32 pb-24 overflow-hidden">
+      <section className="relative bg-black text-white pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
         <div aria-hidden className="pointer-events-none absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-fuchsia-500/30 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-24 w-[32rem] h-[32rem] rounded-full bg-purple-400/20 blur-3xl" />
         

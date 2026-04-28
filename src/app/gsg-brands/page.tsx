@@ -24,7 +24,7 @@ export default function GsgBrandsPage() {
         <div className="absolute inset-0 opacity-25">
           <img src="/images/affiliates-entrepreneurs.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-950/80 via-purple-900/60 to-purple-900/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
