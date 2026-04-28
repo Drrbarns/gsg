@@ -89,7 +89,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {businessUnits.map((unit, index) => (
               <motion.div
                 key={unit.title}
@@ -97,36 +97,47 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group h-full"
+                className="group relative flex flex-col h-full rounded-3xl bg-[#faf8f4] border border-neutral-900/[0.06] hover:border-purple-900/10 hover:shadow-xl hover:shadow-purple-900/5 transition-all overflow-hidden"
               >
-                <Card className="h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-200 bg-white shadow-sm overflow-hidden flex flex-col">
-                  <CardHeader className="flex-1 pb-4">
-                    <div className="w-14 h-14 flex items-center justify-center bg-purple-100 text-purple-700 rounded-2xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
-                      <unit.icon className="w-7 h-7" />
-                    </div>
-                    <CardTitle className="flex items-center gap-2 text-xl font-bold">
-                      {unit.title}
-                      {unit.active && unit.comingSoon && (
-                        <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-100">Coming Soon</Badge>
+                <div className="flex-1 p-6 sm:p-8 pb-0 sm:pb-0">
+                  <div className="flex items-start justify-between mb-6">
+                    <span
+                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-600 shadow-lg shadow-purple-900/20"
+                    >
+                      <unit.icon className="w-6 h-6 text-white" strokeWidth={2} />
+                    </span>
+                    <div className="flex gap-2">
+                      {unit.active && unit.comingSoon ? (
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-purple-100 text-purple-700">Coming Soon</span>
+                      ) : unit.active ? (
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-emerald-100 text-emerald-700">Live</span>
+                      ) : (
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-neutral-200 text-neutral-600">Dev</span>
                       )}
-                    </CardTitle>
-                    <CardDescription className="text-base text-gray-600 leading-relaxed mt-2 line-clamp-5">{unit.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="mt-auto pt-4">
-                    {unit.active ? (
-                      <a href={unit.url} target={unit.url.startsWith('http') ? "_blank" : "_self"} rel={unit.url.startsWith('http') ? "noopener noreferrer" : ""} className="cursor-pointer block">
-                        <Button className="w-full gap-2 bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white transition-colors duration-300">
-                          Visit Service
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button className="w-full bg-gray-50 text-gray-400 border-0" disabled>
-                        Coming Soon
-                      </Button>
-                    )}
-                  </CardContent>
-                </Card>
+                    </div>
+                  </div>
+                  
+                  <h3 className="flex items-center gap-2 text-2xl font-bold text-neutral-900 tracking-tight mb-3 group-hover:text-purple-950 transition-colors">
+                    {unit.title}
+                  </h3>
+                  <p className="text-base text-neutral-600 leading-relaxed mb-8">{unit.description}</p>
+                </div>
+                
+                <div className="p-6 sm:p-8 pt-0 mt-auto relative z-10">
+                  {unit.active ? (
+                    <a href={unit.url} target={unit.url.startsWith('http') ? "_blank" : "_self"} rel={unit.url.startsWith('http') ? "noopener noreferrer" : ""} className="cursor-pointer block">
+                      <button className="flex w-full items-center justify-between gap-2 px-6 py-4 rounded-xl bg-white border border-neutral-900/10 text-neutral-900 font-semibold hover:bg-neutral-50 hover:border-neutral-900/20 transition-all group/btn">
+                        Visit Service
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:text-purple-700 transition-all" />
+                      </button>
+                    </a>
+                  ) : (
+                    <button className="flex w-full items-center justify-between gap-2 px-6 py-4 rounded-xl bg-neutral-100 border border-transparent text-neutral-400 font-semibold cursor-not-allowed">
+                      Coming Soon
+                    </button>
+                  )}
+                </div>
+                <div aria-hidden className="absolute -bottom-16 -right-16 w-48 h-48 bg-gradient-to-br from-purple-100 to-transparent rounded-full opacity-0 group-hover:opacity-50 transition-opacity blur-3xl" />
               </motion.div>
             ))}
           </div>
