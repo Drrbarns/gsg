@@ -223,58 +223,75 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white border-t border-gray-100">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-purple-900 rounded-3xl overflow-hidden shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-10 sm:p-16 lg:p-20 flex flex-col justify-center text-white">
-                <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
-                  We're here to help.
-                </h2>
-                <p className="text-lg text-purple-100 max-w-lg mb-10 leading-relaxed">
-                  Our customer experience team is on standby to assist you. Reach out through your preferred channel for fast, reliable support across all GSG Brands services.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/customer-experience" className="cursor-pointer">
-                    <Button size="lg" className="w-full sm:w-auto gap-2 bg-white text-purple-900 hover:bg-gray-50 h-14 px-8 text-base font-semibold">
-                      <Headphones className="w-5 h-5" />
-                      Visit Customer Experience
-                    </Button>
-                  </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-xl shadow-purple-900/20"
+          >
+            <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-fuchsia-500/20 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-purple-400/15 blur-3xl" />
+
+            <div className="relative px-6 py-12 sm:px-12 sm:py-14 lg:py-16">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 mb-10">
+                <div className="max-w-xl">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/90 mb-5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Customer Experience · Online now
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    We&apos;re here to help.
+                  </h2>
+                  <p className="mt-4 text-base sm:text-lg text-purple-100/90 max-w-md leading-relaxed">
+                    Reach our team through your preferred channel for fast, reliable support across all GSG Brands services.
+                  </p>
                 </div>
+
+                <Link href="/customer-experience" className="cursor-pointer shrink-0">
+                  <Button size="lg" className="gap-2 bg-white text-purple-900 hover:bg-purple-50 h-12 px-6 text-sm font-semibold shadow-lg">
+                    <Headphones className="w-4 h-4" />
+                    Visit Customer Experience
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
               </div>
-              
-              <div className="bg-purple-950 p-10 sm:p-16 lg:p-20 flex flex-col justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  {[
-                    { name: 'WhatsApp', handle: '+233 246 033 792', href: 'https://wa.me/233246033792', icon: MessageCircle },
-                    { name: 'Telegram', handle: '@gsgbrandsgh', href: 'https://t.me/gsgbrandsgh', icon: Send },
-                    { name: 'Call Us', handle: '+233 (0) 579 033 792', href: 'tel:+233579033792', icon: Phone },
-                    { name: 'Email', handle: 'info@gsgbrands.com.gh', href: 'mailto:info@gsgbrands.com.gh', icon: Mail },
-                  ].map((channel) => (
-                    <a
-                      key={channel.name}
-                      href={channel.href}
-                      target={channel.href.startsWith('http') ? '_blank' : undefined}
-                      rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group flex items-start gap-4 p-5 rounded-2xl bg-purple-900/40 hover:bg-purple-800 border border-purple-800/50 hover:border-purple-600 transition-all"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center shrink-0 group-hover:bg-purple-700 transition-colors">
-                        <channel.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-white mb-1">{channel.name}</p>
-                        <p className="text-sm text-purple-200">{channel.handle}</p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-                <p className="mt-8 text-sm text-purple-300 text-center lg:text-left">
-                  Live calls 05:00am – 02:00pm (Mon–Fri).
-                </p>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                {[
+                  { name: 'WhatsApp', handle: '+233 246 033 792', href: 'https://wa.me/233246033792', icon: MessageCircle },
+                  { name: 'Telegram', handle: '@gsgbrandsgh', href: 'https://t.me/gsgbrandsgh', icon: Send },
+                  { name: 'Call Us', handle: '+233 (0) 579 033 792', href: 'tel:+233579033792', icon: Phone },
+                  { name: 'Email', handle: 'info@gsgbrands.com.gh', href: 'mailto:info@gsgbrands.com.gh', icon: Mail },
+                ].map((channel) => (
+                  <a
+                    key={channel.name}
+                    href={channel.href}
+                    target={channel.href.startsWith('http') ? '_blank' : undefined}
+                    rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/30 transition-all"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-purple-700 transition-colors">
+                      <channel.icon className="w-4 h-4 text-white group-hover:text-purple-700 transition-colors" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-white/60 group-hover:text-white/80 uppercase tracking-wider transition-colors">{channel.name}</p>
+                      <p className="text-sm font-medium text-white truncate">{channel.handle}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-center gap-2 text-xs text-purple-200/80">
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10">
+                  <Phone className="w-2.5 h-2.5" />
+                </span>
+                Live calls available 05:00am – 02:00pm (Mon–Fri)
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
