@@ -161,22 +161,22 @@ export default function AskGsgBrandsPage() {
         </div>
       </section>
 
-      {/* FAQs — dark “reader” band */}
-      <section id="faq" className="scroll-mt-20 relative bg-[#121014] text-white py-16 md:py-24 border-t border-white/10">
-        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/35 to-transparent" />
+      {/* FAQs — redesigned light theme */}
+      <section id="faq" className="scroll-mt-20 relative bg-white text-neutral-900 py-16 md:py-24 border-t border-neutral-900/10 shadow-sm">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-600/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
             <div>
-              <p className="text-xs font-bold tracking-[0.22em] uppercase text-purple-300/95 mb-2">FAQ</p>
-              <h2 className={`${display.className} text-3xl sm:text-4xl md:text-[2.65rem]`}>What people ask first.</h2>
+              <p className="text-xs font-bold tracking-[0.22em] uppercase text-purple-700 mb-2">FAQ</p>
+              <h2 className={`${display.className} text-3xl sm:text-4xl md:text-[2.65rem] text-neutral-950`}>What people ask first.</h2>
             </div>
-            <p className="max-w-md text-sm text-neutral-400 leading-relaxed">
+            <p className="max-w-md text-sm text-neutral-600 leading-relaxed">
               Straight answers — if something contradicts what you heard on WhatsApp, the written FAQ wins until we revise
               it.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-0 border-t border-white/[0.08]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-0 border-t border-neutral-900/10">
             {faqs.map((faq, index) => (
               <motion.div
                 key={faq.question}
@@ -184,19 +184,19 @@ export default function AskGsgBrandsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-30px' }}
                 transition={{ duration: 0.35, delay: index * 0.03 }}
-                className={`border-b border-white/[0.08] py-8 ${index % 2 === 0 ? 'lg:border-r lg:border-white/[0.08] lg:pr-10' : 'lg:pl-10'}`}
+                className={`border-b border-neutral-900/10 py-8 ${index % 2 === 0 ? 'lg:border-r lg:border-neutral-900/10 lg:pr-10' : 'lg:pl-10'}`}
               >
                 <div className="flex gap-4 sm:gap-5 min-w-0">
                   <span
-                    className={`${display.className} text-2xl sm:text-3xl text-white/[0.12] tabular-nums leading-none shrink-0 w-10 sm:w-14`}
+                    className={`${display.className} text-3xl sm:text-4xl text-purple-100 font-medium tabular-nums leading-none shrink-0 w-10 sm:w-14 mt-1`}
                   >
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold text-white tracking-tight text-[15px] sm:text-[17px] mb-3 leading-snug break-words">
+                    <h3 className="font-semibold text-neutral-900 tracking-tight text-[15px] sm:text-[17px] mb-3 leading-snug break-words">
                       {faq.question}
                     </h3>
-                    <p className="text-neutral-400 text-sm sm:text-[15px] leading-relaxed break-words">{faq.answer}</p>
+                    <p className="text-neutral-600 text-sm sm:text-[15px] leading-relaxed break-words">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
