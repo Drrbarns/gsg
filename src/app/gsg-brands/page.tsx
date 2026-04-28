@@ -20,8 +20,12 @@ export default function GsgBrandsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-25">
+          <img src="/images/affiliates-entrepreneurs.png" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-950/80 via-purple-900/60 to-purple-900/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

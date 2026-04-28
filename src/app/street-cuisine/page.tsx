@@ -13,7 +13,7 @@ export default function StreetCuisinePage() {
             <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 opacity-40">
                     <img
-                        src="https://readdy.ai/api/search-image?query=ghanaian%20street%20food%20jollof%20waakye%20kebab%20vibrant%20market%20food%20stall%20cooking%20fresh%20ingredients%20steam%20delicious%20appetizing%20high%20quality%20photography&width=1920&height=1080&seq=street-cuisine-hero&orientation=landscape"
+                        src="/images/streetcuisine-chef.png"
                         alt="Street Cuisine Hero"
                         className="w-full h-full object-cover"
                     />

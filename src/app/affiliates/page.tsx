@@ -13,7 +13,7 @@ export default function AffiliatesPage() {
             <section className="relative min-h-[60vh] flex items-center bg-purple-900 text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                     <img
-                        src="https://readdy.ai/api/search-image?query=business%20partnership%20growth%20chart%20success%20team%20handshake%20digital%20marketing%20affiliate%20network%20income%20purple%20theme%20professional%20corporate&width=1920&height=1080&seq=affiliate-hero&orientation=landscape"
+                        src="/images/affiliates-entrepreneurs.png"
                         alt="Affiliate Hero"
                         className="w-full h-full object-cover"
                     />

@@ -10,10 +10,10 @@ export default function CourierDeliveryPage() {
     return (
         <main className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center bg-blue-900 text-white overflow-hidden">
-                <div className="absolute inset-0 opacity-20">
+            <section className="relative min-h-[70vh] flex items-center bg-purple-900 text-white overflow-hidden">
+                <div className="absolute inset-0 opacity-30">
                     <img
-                        src="https://readdy.ai/api/search-image?query=delivery%20logistics%20courier%20service%20ghana%20truck%20van%20package%20shipping%20global%20transport%20fast%20efficient%20professional%20blue%20theme%20dynamic%20action%20shot&width=1920&height=1080&seq=courier-hero&orientation=landscape"
+                        src="/images/courier-delivery-rider.png"
                         alt="Delivery Hero"
                         className="w-full h-full object-cover"
                     />

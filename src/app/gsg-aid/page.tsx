@@ -38,7 +38,7 @@ export default function GsgAidPage() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white">
         <div className="absolute inset-0 opacity-30">
           <img
-            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1920&auto=format&fit=crop"
+            src="/images/gsg-aid-community.png"
             alt="GSG-AID"
             className="w-full h-full object-cover"
           />

@@ -17,7 +17,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-white">
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1920&auto=format&fit=crop" className="w-full h-full object-cover" alt="Team" />
+          <img src="/images/team-leadership-ghana.png" className="w-full h-full object-cover" alt="GSG Brands Leadership Team" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/50 to-transparent"></div>
 
