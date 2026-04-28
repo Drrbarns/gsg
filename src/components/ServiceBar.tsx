@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
-const services = [
+const services: { name: string; url: string; active: boolean; comingSoon?: boolean }[] = [
   { name: 'Convenience Goods & More', url: 'https://goods.gsgbrands.com.gh', active: true },
   { name: 'Personal Shopper', url: 'https://shopper.gsgbrands.com.gh', active: true },
   { name: 'Sell-Safe Buy-Safe', url: 'https://sellbuysafe.gsgbrands.com.gh', active: true },
