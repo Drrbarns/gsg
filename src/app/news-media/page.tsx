@@ -23,7 +23,7 @@ export default function NewsMediaPage() {
     <main className="min-h-screen bg-gray-50/30">
       <section className="relative bg-black text-white pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
+          <img src="/images/team-leadership-ghana.webp" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/30"></div>
         

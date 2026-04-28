@@ -81,7 +81,7 @@ export default function AboutPage() {
             }}
           >
             <Image
-              src="/images/team-leadership-ghana.png"
+              src="/images/team-leadership-ghana.webp"
               alt="GSG Brands leadership team"
               fill
               className="object-cover object-[center_25%]"
@@ -163,7 +163,7 @@ export default function AboutPage() {
                 <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black/10">
                   <div className="relative aspect-[21/13] md:aspect-[16/10]">
                     <Image
-                      src="/images/team-leadership-ghana.png"
+                      src="/images/team-leadership-ghana.webp"
                       alt=""
                       fill
                       className="object-cover"

@@ -70,7 +70,7 @@ export default function AskGsgBrandsPage() {
             }}
           >
             <Image
-              src="/images/customer-experience-agent.png"
+              src="/images/customer-experience-agent.webp"
               alt=""
               fill
               className="object-cover object-[center_25%]"

@@ -13,7 +13,7 @@ export default function CourierDeliveryPage() {
             <section className="relative min-h-[70vh] flex items-center bg-black text-white overflow-hidden">
                 <div className="absolute inset-0">
                     <img
-                        src="/images/courier-delivery-rider.png"
+                        src="/images/courier-delivery-rider.webp"
                         alt="Delivery Hero"
                         className="w-full h-full object-cover"
                     />

@@ -38,7 +38,7 @@ export default function GsgAidPage() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-black text-white">
         <div className="absolute inset-0">
           <img
-            src="/images/gsg-aid-community.png"
+            src="/images/gsg-aid-community.webp"
             alt="GSG-AID"
             className="w-full h-full object-cover"
           />
@@ -226,7 +226,7 @@ export default function GsgAidPage() {
             className="relative rounded-3xl overflow-hidden shadow-xl shadow-purple-900/20"
           >
             <div className="absolute inset-0">
-              <img src="/images/team-leadership-ghana.png" alt="" className="w-full h-full object-cover" />
+              <img src="/images/team-leadership-ghana.webp" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="absolute inset-0 bg-black/30"></div>
 

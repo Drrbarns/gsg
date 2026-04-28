@@ -13,7 +13,7 @@ export default function AffiliatesPage() {
             <section className="relative min-h-[60vh] flex items-center bg-black text-white overflow-hidden">
                 <div className="absolute inset-0">
                     <img
-                        src="/images/affiliates-entrepreneurs.png"
+                        src="/images/affiliates-entrepreneurs.webp"
                         alt="Affiliate Hero"
                         className="w-full h-full object-cover"
                     />

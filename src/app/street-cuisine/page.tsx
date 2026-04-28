@@ -13,7 +13,7 @@ export default function StreetCuisinePage() {
             <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0">
                     <img
-                        src="/images/streetcuisine-chef.png"
+                        src="/images/streetcuisine-chef.webp"
                         alt="Street Cuisine Hero"
                         className="w-full h-full object-cover"
                     />

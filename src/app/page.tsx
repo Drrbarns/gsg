@@ -32,7 +32,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-black">
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-market-ghana.png"
+            src="/images/hero-market-ghana.webp"
             alt="GSG Brands Hero"
             fill
             className="object-cover"
@@ -158,7 +158,7 @@ export default function Home() {
             }}
           >
             <Image
-              src="/images/convenience-goods-family.png"
+              src="/images/convenience-goods-family.webp"
               alt=""
               fill
               className="object-cover"
@@ -341,7 +341,7 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/customer-experience-agent.png"
+                  src="/images/customer-experience-agent.webp"
                   alt=""
                   fill
                   className="object-cover object-[center_30%]"

@@ -53,7 +53,7 @@ export default function TrackingPage() {
     <main className="min-h-screen bg-white">
       <section className="relative bg-black text-white py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/courier-delivery-rider.png" alt="" className="w-full h-full object-cover" />
+          <img src="/images/courier-delivery-rider.webp" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

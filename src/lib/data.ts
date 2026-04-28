@@ -85,7 +85,7 @@ export const newsArticles = [
       <p>We are incredibly grateful for the trust and loyalty our customers have shown us, which has made this rapid growth possible. However, this is just the beginning. We remain deeply committed to continuing this upward trajectory, with plans to bring the GSG Brands standard of excellence to every single corner of the country over the next 24 months.</p>
       <p>Stay tuned for more updates as we continue to build a brighter, more connected Ghana.</p>
     `,
-        image: '/news/news-expansion.png',
+        image: '/news/news-expansion.webp',
     },
     {
         slug: 'new-partnership-local-vendors',
@@ -112,7 +112,7 @@ export const newsArticles = [
       <h2>The Sell-Safe Buy-Safe Promise</h2>
       <p>Whether you are purchasing a brand-new smartphone or bespoke traditional wear, our integrated payment gateway holds funds securely until the buyer confirms receipt and satisfaction. This zero-risk environment is the future of e-commerce in Africa, and we are proud to lead the charge.</p>
     `,
-        image: '/news/news-partnership.png',
+        image: '/news/news-partnership.webp',
     },
     {
         slug: 'customer-satisfaction-reaches-98-percent',
@@ -140,7 +140,7 @@ export const newsArticles = [
       
       <p>To all our customers: thank you. Your trust, your feedback, and your continuous support are the fuel that drives the GSG Brands engine. We promise to keep raising the bar.</p>
     `,
-        image: '/news/news-satisfaction.png',
+        image: '/news/news-satisfaction.webp',
     },
     {
         slug: 'how-to-use-personal-shopper-service',
@@ -169,7 +169,7 @@ export const newsArticles = [
       <h2>4. Sit Back and Enjoy the Convenience</h2>
       <p>Once you've made your choices, we handle the rest. We negotiate the final price, securely package your items, and coordinate with our Courier unit to deliver everything straight to your door. Experience the ultimate convenience today.</p>
     `,
-        image: '/news/news-shopper.png',
+        image: '/news/news-shopper.webp',
     },
     {
         slug: 'streetcuisine-launch-announcement',
@@ -196,7 +196,7 @@ export const newsArticles = [
       <p>By ordering through StreetCuisine, you aren't just getting a great meal; you are directly supporting the grassroots economy. We provide these micro-entrepreneurs with the digital tools and logistics network they need to scale their businesses exponentially.</p>
       <p>Keep an eye on our social media channels for the official launch date in your area. Your favorite local flavors are about to get a major upgrade.</p>
     `,
-        image: '/news/news-cuisine.png',
+        image: '/news/news-cuisine.webp',
     },
     {
         slug: 'secure-shopping-tips',
@@ -229,7 +229,7 @@ export const newsArticles = [
       
       <p>By following these simple steps, you can enjoy all the benefits of online commerce with total peace of mind. Happy, safe shopping!</p>
     `,
-        image: '/news/news-secure.png',
+        image: '/news/news-secure.webp',
     },
 ];
 
