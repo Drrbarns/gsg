@@ -79,17 +79,12 @@ export default function Footer() {
             <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-sm">
               Building a comprehensive ecosystem of services that save time and money for our customers across Ghana.
             </p>
-            <a
-              href="https://ig.me/m/gsgbrandsgh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-full bg-white/5 border border-white/10 pl-1 pr-3.5 py-1 text-sm text-white/80 hover:bg-white/10 hover:border-purple-500/50 transition-all"
-            >
+            <div className="inline-flex items-center gap-2.5 rounded-full bg-white/5 border border-white/10 pl-1 pr-3.5 py-1 text-sm text-white/80 cursor-default">
               <div className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center">
                 <i className="ri-instagram-line text-white text-base" aria-hidden />
               </div>
               <span className="font-medium tracking-wide">@gsgbrandsgh</span>
-            </a>
+            </div>
           </div>
 
           {/* Explore Links */}

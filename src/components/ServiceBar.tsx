@@ -21,12 +21,12 @@ export default function ServiceBar() {
       transition={{ duration: 0.4 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="hidden md:flex items-center gap-4 opacity-80">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <div className="hidden md:flex items-center gap-4 opacity-80 shrink-0">
             <span>GSG Brands Business Units</span>
           </div>
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar justify-start md:justify-end w-full md:w-auto">
-            {services.map((service, index) => (
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-1.5 md:gap-4 w-full md:w-auto justify-start md:justify-end">
+            {services.map((service) => (
               <div key={service.name} className="whitespace-nowrap flex-shrink-0">
                 {service.active ? (
                   <a
