@@ -216,91 +216,96 @@ export default function GsgAidPage() {
       </section>
 
       {/* GET INVOLVED */}
-      <section className="relative py-24 overflow-hidden bg-white">
+      <section className="relative py-16 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-2xl shadow-purple-900/30"
+            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-xl shadow-purple-900/20"
           >
-            <div aria-hidden className="pointer-events-none absolute -top-32 -right-32 w-96 h-96 rounded-full bg-fuchsia-500/30 blur-3xl" />
-            <div aria-hidden className="pointer-events-none absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-purple-400/20 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl" />
             <div
               aria-hidden
-              className="absolute inset-0 opacity-[0.06]"
+              className="absolute inset-0 opacity-[0.05]"
               style={{
                 backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)',
                 backgroundSize: '40px 40px',
               }}
             />
 
-            <div className="relative px-6 py-16 sm:px-12 lg:px-16 lg:py-20 text-white">
-              <div className="text-center max-w-3xl mx-auto mb-14">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] font-bold tracking-widest uppercase mb-5">
-                  <HandHeart className="w-3 h-3" />
-                  Get Involved
+            <div className="relative px-6 py-10 sm:px-10 sm:py-12 text-white">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
+                <div className="max-w-xl">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold tracking-widest uppercase mb-3">
+                    <HandHeart className="w-3 h-3" />
+                    Get Involved
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
+                    Build the change with us.
+                  </h2>
+                  <p className="mt-3 text-sm sm:text-base text-purple-100/90 leading-relaxed">
+                    Time, expertise, or resources—every contribution helps us reach further.
+                  </p>
                 </div>
-                <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight">
-                  Build the change with us.
-                </h2>
-                <p className="text-lg text-purple-100/90 leading-relaxed">
-                  Whether you have time, expertise, or resources—every contribution helps us reach further and deeper into the communities we serve.
-                </p>
+
+                <Link href="/customer-experience" className="shrink-0">
+                  <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 h-11 px-5 font-semibold gap-2 rounded-full text-sm">
+                    Contact Us
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                 {involvementOptions.map((option, index) => (
                   <motion.div
                     key={option.title}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.08 }}
-                    className="group relative p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all duration-300"
+                    transition={{ duration: 0.4, delay: index * 0.06 }}
+                    className="group p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all duration-300"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white group-hover:text-purple-700 transition-colors">
-                      <option.icon className="w-5 h-5" />
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-purple-700 transition-colors shrink-0">
+                        <option.icon className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-sm font-bold tracking-tight">{option.title}</h3>
                     </div>
-                    <h3 className="text-lg font-bold tracking-tight mb-2">{option.title}</h3>
-                    <p className="text-sm text-purple-100/80 leading-relaxed">{option.description}</p>
+                    <p className="text-xs text-purple-100/80 leading-relaxed">{option.description}</p>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-white/10">
-                <span className="text-sm text-purple-200/90 font-medium">Ready to take the next step?</span>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link href="/customer-experience">
-                    <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 h-12 px-6 font-semibold gap-2 rounded-full">
-                      Contact Us
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5 border-t border-white/10 text-xs">
+                <span className="text-purple-200/90 font-medium">Reach our team directly:</span>
+                <div className="flex flex-wrap items-center gap-2">
                   <a
                     href="https://wa.me/233246033792"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                    className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-white/10 border border-white/15 font-semibold hover:bg-white/15 transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-3.5 h-3.5" />
                     WhatsApp
                   </a>
                   <a
                     href="https://t.me/gsgbrandsgh"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                    className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-white/10 border border-white/15 font-semibold hover:bg-white/15 transition-colors"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3.5 h-3.5" />
                     Telegram
                   </a>
                   <a
                     href="mailto:info@gsgbrands.com.gh"
-                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                    className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-white/10 border border-white/15 font-semibold hover:bg-white/15 transition-colors"
                   >
-                    <Mail className="w-4 h-4" />
+                    <Mail className="w-3.5 h-3.5" />
                     Email
                   </a>
                 </div>
