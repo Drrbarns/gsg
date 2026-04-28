@@ -156,46 +156,29 @@ export default function CustomerExperiencePage() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-24 md:py-0 md:min-h-[min(88vh,820px)] md:flex md:items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end lg:items-center w-full">
-            <div className="lg:col-span-7 xl:col-span-6">
-              <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-neutral-300 mb-4 md:mb-5">
-                Support · GSG Brands
-              </p>
-              <h1
-                className={`${display.className} text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.02] text-white tracking-tight`}
+          <div className="max-w-3xl">
+            <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-neutral-300 mb-4 md:mb-5">
+              Support · GSG Brands
+            </p>
+            <h1
+              className={`${display.className} text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.02] text-white tracking-tight`}
+            >
+              Real people.
+              <br />
+              <span className="italic text-purple-200/95">Straight answers.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-[17px] sm:text-lg text-neutral-200/90 leading-relaxed">
+              Routing, courier, commerce, or escrow — whichever product you touch, one team stays within reach on
+              chat, phone, and email.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-[#1a1025] font-semibold text-sm px-6 py-3.5 hover:bg-neutral-100 transition-colors"
               >
-                Real people.
-                <br />
-                <span className="italic text-purple-200/95">Straight answers.</span>
-              </h1>
-              <p className="mt-6 max-w-lg text-[17px] sm:text-lg text-neutral-200/90 leading-relaxed">
-                Routing, courier, commerce, or escrow — whichever product you touch, one team stays within reach on
-                chat, phone, and email.
-              </p>
-            </div>
-
-            <div className="lg:col-span-5 xl:col-span-6 lg:pl-4">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-md lg:max-w-none lg:ml-auto">
-                <div className="col-span-2 rounded-xl border border-white/15 bg-white/[0.07] backdrop-blur-md px-4 py-4 text-white">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-semibold mb-1">Response</p>
-                  <p className="text-lg font-semibold tracking-tight">Usually under 24h on email</p>
-                </div>
-                <div className="rounded-xl border border-white/15 bg-white/[0.05] px-4 py-3 text-sm text-white/85">
-                  <MessageCircle className="w-4 h-4 text-emerald-400 mb-1" />
-                  Chat-first
-                </div>
-                <div className="rounded-xl border border-white/15 bg-white/[0.05] px-4 py-3 text-sm text-white/85">
-                  <Clock className="w-4 h-4 text-amber-300 mb-1" />
-                  Call slots
-                </div>
-                <Link
-                  href="#contact"
-                  className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-white text-[#1a1025] font-semibold text-sm py-3.5 hover:bg-neutral-100 transition-colors"
-                >
-                  Write the team
-                  <ArrowDownIcon className="w-4 h-4" />
-                </Link>
-              </div>
+                Write the team
+                <ArrowDownIcon className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
