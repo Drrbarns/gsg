@@ -2,14 +2,39 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Heart, HandHeart, ArrowRight } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Heart, HandHeart, ArrowRight, Quote, Sparkles, MessageCircle, Send, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { aidFocusAreas } from '@/lib/data';
+
+const impactStats = [
+  { value: '5,000+', label: 'Lives Touched', sublabel: 'across rural and urban Ghana' },
+  { value: '12', label: 'Active Programs', sublabel: 'in education, health & livelihoods' },
+  { value: '40+', label: 'Partner Communities', sublabel: 'and growing every quarter' },
+  { value: '100%', label: 'Transparency', sublabel: 'on every cedi raised and spent' },
+];
+
+const involvementOptions = [
+  {
+    title: 'Volunteer your time',
+    description: 'Lend a few hours a month to mentorship, distribution, or community outreach.',
+    icon: HandHeart,
+  },
+  {
+    title: 'Become a partner',
+    description: 'Co-design programs with us as a corporate, NGO, or institutional partner.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Contribute resources',
+    description: 'Donate goods, services, or funding to fuel sustainable, measurable change.',
+    icon: Heart,
+  },
+];
 
 export default function GsgAidPage() {
   return (
     <main className="min-h-screen bg-white">
+      {/* HERO */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white">
         <div className="absolute inset-0 opacity-30">
           <img
@@ -38,8 +63,9 @@ export default function GsgAidPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/customer-experience">
-                <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 border-none h-14 px-8 text-lg font-bold">
+                <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 border-none h-14 px-8 text-lg font-bold gap-2">
                   Partner With Us
+                  <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
             </div>
@@ -47,89 +73,239 @@ export default function GsgAidPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      {/* IMPACT STATS STRIP */}
+      <section className="relative -mt-12 z-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-white border border-gray-100 shadow-2xl shadow-purple-900/10 overflow-hidden"
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+              {impactStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.07 }}
+                  className="p-6 sm:p-8 text-center group hover:bg-purple-50/50 transition-colors"
+                >
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-br from-purple-700 to-fuchsia-600 bg-clip-text text-transparent">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 text-sm font-bold text-gray-900 uppercase tracking-wider">{stat.label}</div>
+                  <div className="mt-1 text-xs text-gray-500 leading-relaxed max-w-[20ch] mx-auto">{stat.sublabel}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* MISSION */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-br from-purple-100/60 via-fuchsia-50 to-transparent blur-3xl rounded-full" />
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-6 tracking-wider uppercase">
+              <Sparkles className="w-3 h-3" />
+              Our Mission
+            </div>
+
+            <div className="relative">
+              <Quote
+                aria-hidden
+                className="absolute -top-6 -left-2 sm:-top-8 sm:-left-6 w-16 h-16 sm:w-20 sm:h-20 text-purple-100 -scale-x-100"
+                strokeWidth={1.5}
+              />
+              <p className="relative text-2xl sm:text-3xl lg:text-4xl text-gray-800 leading-snug font-medium tracking-tight">
+                To empower underserved communities through sustainable development initiatives, focusing on
+                <span className="bg-gradient-to-r from-purple-700 to-fuchsia-600 bg-clip-text text-transparent"> education, healthcare, and economic self-reliance</span>,
+                ensuring that every individual has the opportunity to thrive.
+              </p>
+              <Quote
+                aria-hidden
+                className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 text-purple-100"
+                strokeWidth={1.5}
+              />
+            </div>
+
+            <div className="mt-12 flex items-center justify-center gap-3">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-purple-300" />
+              <span className="text-xs font-bold tracking-widest uppercase text-gray-400">GSG-AID Foundation</span>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-300" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FOCUS AREAS */}
+      <section className="relative py-20 bg-gradient-to-b from-gray-50/40 to-white overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.6) 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16 max-w-3xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700 mb-5 tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+              Focus Areas
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-5 tracking-tight bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 bg-clip-text text-transparent leading-tight">
+              Where we direct our efforts
+            </h2>
+            <p className="text-lg text-gray-500 leading-relaxed">
+              Four pillars guiding every initiative—designed for measurable, lasting impact.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {aidFocusAreas.map((area, index) => (
+              <motion.div
+                key={area.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="group relative h-full"
+              >
+                <div aria-hidden className="absolute -inset-px rounded-3xl bg-gradient-to-br from-purple-400/0 via-fuchsia-400/0 to-purple-600/0 group-hover:from-purple-400/40 group-hover:via-fuchsia-400/40 group-hover:to-purple-600/40 transition-all duration-500 blur-sm" />
+
+                <div className="relative h-full p-7 rounded-3xl bg-white border border-gray-100 hover:border-transparent group-hover:shadow-2xl group-hover:shadow-purple-200/40 transition-all duration-500 hover:-translate-y-1 flex flex-col overflow-hidden">
+                  <div aria-hidden className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative flex items-start justify-between mb-6">
+                    <div className="relative">
+                      <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-600 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
+                      <div className="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 group-hover:from-purple-600 group-hover:to-fuchsia-600 group-hover:text-white transition-all duration-500">
+                        <area.icon className="w-5 h-5" strokeWidth={2} />
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{`0${index + 1}`}</span>
+                  </div>
+
+                  <h3 className="relative text-lg font-bold text-gray-900 mb-2 tracking-tight">{area.title}</h3>
+                  <p className="relative text-sm text-gray-500 leading-relaxed flex-1">{area.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GET INVOLVED */}
+      <section className="relative py-24 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-24"
+            className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-purple-700 via-purple-800 to-purple-950 shadow-2xl shadow-purple-900/30"
           >
-            <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-2xl text-gray-700 leading-relaxed font-light">
-                "To empower underserved communities through sustainable development initiatives, focusing on education, healthcare, and economic self-reliance, ensuring that every individual has the opportunity to thrive."
-              </p>
-            </div>
-          </motion.div>
+            <div aria-hidden className="pointer-events-none absolute -top-32 -right-32 w-96 h-96 rounded-full bg-fuchsia-500/30 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-purple-400/20 blur-3xl" />
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)',
+                backgroundSize: '40px 40px',
+              }}
+            />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <div className="flex justify-between items-end mb-12 px-4">
-              <div>
-                <h2 className="text-4xl font-bold mb-2">Our Focus Areas</h2>
-                <p className="text-gray-600">Where we direct our efforts for maximum impact</p>
+            <div className="relative px-6 py-16 sm:px-12 lg:px-16 lg:py-20 text-white">
+              <div className="text-center max-w-3xl mx-auto mb-14">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] font-bold tracking-widest uppercase mb-5">
+                  <HandHeart className="w-3 h-3" />
+                  Get Involved
+                </div>
+                <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight">
+                  Build the change with us.
+                </h2>
+                <p className="text-lg text-purple-100/90 leading-relaxed">
+                  Whether you have time, expertise, or resources—every contribution helps us reach further and deeper into the communities we serve.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                {involvementOptions.map((option, index) => (
+                  <motion.div
+                    key={option.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="group relative p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all duration-300"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white group-hover:text-purple-700 transition-colors">
+                      <option.icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-tight mb-2">{option.title}</h3>
+                    <p className="text-sm text-purple-100/80 leading-relaxed">{option.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-white/10">
+                <span className="text-sm text-purple-200/90 font-medium">Ready to take the next step?</span>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link href="/customer-experience">
+                    <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 h-12 px-6 font-semibold gap-2 rounded-full">
+                      Contact Us
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                  <a
+                    href="https://wa.me/233246033792"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href="https://t.me/gsgbrandsgh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                  >
+                    <Send className="w-4 h-4" />
+                    Telegram
+                  </a>
+                  <a
+                    href="mailto:info@gsgbrands.com.gh"
+                    className="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/15 transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email
+                  </a>
+                </div>
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {aidFocusAreas.map((area, index) => (
-                <motion.div
-                  key={area.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-none shadow-md bg-neutral-50 hover:bg-purple-50 group">
-                    <CardHeader className="flex flex-row gap-6 items-start">
-                      <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:bg-purple-600 transition-colors duration-300">
-                        <area.icon className="w-8 h-8 text-purple-600 group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-2xl mb-2 group-hover:text-purple-800 transition-colors">{area.title}</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">{area.description}</CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card className="border-none bg-gradient-to-br from-purple-900 via-purple-800 to-black text-white overflow-hidden relative">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubic-zeus.png')]"></div>
-              <CardContent className="relative z-10 flex flex-col md:flex-row items-center justify-between p-12 gap-8">
-                <div className="max-w-2xl">
-                  <h2 className="text-3xl font-bold mb-4 flex items-center gap-3">
-                    <HandHeart className="w-8 h-8 text-purple-300" />
-                    Get Involved
-                  </h2>
-                  <p className="text-purple-100 text-lg leading-relaxed mb-0">
-                    Whether you need assistance or want to contribute to our mission, we welcome you to be part of the GSG-AID community. Together, we can create meaningful change.
-                  </p>
-                </div>
-
-                <Link href="/customer-experience" className="flex-shrink-0">
-                  <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 h-14 px-8 font-bold text-lg gap-2">
-                    Contact Us
-                    <ArrowRight className="w-5 h-5" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
           </motion.div>
         </div>
       </section>
