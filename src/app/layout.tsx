@@ -79,10 +79,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: site,
   },
-  icons: {
-    icon: [{ url: '/icon', sizes: '32x32', type: 'image/png' }],
-    apple: [{ url: '/apple-icon', sizes: '180x180', type: 'image/png' }],
-  },
   manifest: '/manifest.webmanifest',
 };
 
