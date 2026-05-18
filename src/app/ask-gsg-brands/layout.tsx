@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: canonical,
     type: 'website',
     locale: 'en_GH',
-    siteName: 'GSG Brands',
+    siteName: 'GSG Brands Ghana',
     images: [
       {
         url: 'https://gsgbrands.com.gh/opengraph-image',

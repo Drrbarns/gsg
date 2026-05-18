@@ -71,8 +71,8 @@ export default function MainHeader() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="cursor-pointer">
-            <GsgLogo />
+          <Link href="/" aria-label="GSG Brands Ghana home" className="cursor-pointer">
+            <GsgLogo height={40} priority />
           </Link>
 
           {/* Desktop Nav */}

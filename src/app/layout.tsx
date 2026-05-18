@@ -14,14 +14,15 @@ const site = 'https://gsgbrands.com.gh';
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: 'GSG Brands — Time & money saver for everyday value',
-    template: '%s | GSG Brands',
+    default: 'GSG Brands Ghana — Time & money saver for everyday value',
+    template: '%s | GSG Brands Ghana',
   },
-  applicationName: 'GSG Brands',
+  applicationName: 'GSG Brands Ghana',
   description:
-    'GSG Brands connects convenience shopping, personal shopping, Sell-Safe marketplace, StreetCuisine, courier delivery and support across Ghana.',
+    'GSG Brands Ghana connects convenience shopping, personal shopping, Sell-Safe marketplace, StreetCuisine, courier delivery and support across Ghana.',
   keywords: [
     'GSG Brands',
+    'GSG Brands Ghana',
     'Ghana',
     'Accra',
     'convenience goods',
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
     'StreetCuisine',
     'mobile money',
   ],
-  authors: [{ name: 'GSG Brands', url: site }],
-  creator: 'GSG Brands',
-  publisher: 'GSG Brands',
+  authors: [{ name: 'GSG Brands Ghana', url: site }],
+  creator: 'GSG Brands Ghana',
+  publisher: 'GSG Brands Ghana',
   formatDetection: {
     email: false,
     address: false,
@@ -45,8 +46,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GH',
     url: site,
-    siteName: 'GSG Brands',
-    title: 'GSG Brands — Time & money saver for everyday value',
+    siteName: 'GSG Brands Ghana',
+    title: 'GSG Brands Ghana — Time & money saver for everyday value',
     description:
       'Your hub for convenience goods, personal shopping, marketplace trust, food, courier and customer support in Ghana.',
     images: [
@@ -54,13 +55,13 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'GSG Brands — Ghana connected services',
+        alt: 'GSG Brands Ghana — connected services across Ghana',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GSG Brands — Time & money saver for everyday value',
+    title: 'GSG Brands Ghana — Time & money saver for everyday value',
     description:
       'Convenience shopping, personal shopper, marketplace, StreetCuisine & courier — built for Ghana.',
     images: ['/twitter-image'],

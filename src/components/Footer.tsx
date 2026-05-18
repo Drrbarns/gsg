@@ -75,7 +75,7 @@ export default function Footer() {
         >
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-4 lg:col-span-4">
-            <GsgLogo light className="mb-4" />
+            <GsgLogo light height={56} className="mb-4" />
             <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-sm">
               Building a comprehensive ecosystem of services that save time and money for our customers across Ghana.
             </p>

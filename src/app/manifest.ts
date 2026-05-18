@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'GSG Brands',
+    name: 'GSG Brands Ghana',
     short_name: 'GSG',
     description:
       'Convenience goods, personal shopping, marketplace, StreetCuisine, courier and customer support across Ghana.',

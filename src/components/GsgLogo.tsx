@@ -1,23 +1,58 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export default function GsgLogo({ className = '', light = false }: { className?: string, light?: boolean }) {
+const ASPECT_RATIO = 944 / 304;
+
+interface GsgLogoProps {
+  className?: string;
+  /** Use the white-text variant suited for dark backgrounds. */
+  light?: boolean;
+  /** Rendered height in pixels. Width scales from the source aspect ratio. */
+  height?: number;
+  /** Render without the entrance animation (useful inside already-animated regions). */
+  animate?: boolean;
+  priority?: boolean;
+}
+
+export default function GsgLogo({
+  className = '',
+  light = false,
+  height = 44,
+  animate = true,
+  priority = false,
+}: GsgLogoProps) {
+  const width = Math.round(height * ASPECT_RATIO);
+  const src = light
+    ? '/brand/gsg-brands-logo-light.webp'
+    : '/brand/gsg-brands-logo.webp';
+
+  const inner = (
+    <Image
+      src={src}
+      alt="GSG Brands Ghana"
+      width={width}
+      height={height}
+      priority={priority}
+      sizes={`${width}px`}
+      className="h-auto w-auto"
+      style={{ height, width: 'auto' }}
+    />
+  );
+
+  if (!animate) {
+    return <div className={`inline-flex items-center ${className}`}>{inner}</div>;
+  }
+
   return (
     <motion.div
-      className={`flex items-center gap-2 ${className}`}
+      className={`inline-flex items-center ${className}`}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="relative">
-        <div className="absolute inset-0 bg-primary rounded-full blur-sm opacity-50"></div>
-        <div className="relative bg-primary rounded-full px-5 py-2 border-2 border-white shadow-lg">
-          <div className="absolute inset-0 rounded-full border-2 border-white/40" style={{ margin: '3px' }}></div>
-          <span className="text-white font-bold text-lg sm:text-xl tracking-wider">GSG</span>
-        </div>
-      </div>
-      <span className={`text-lg sm:text-xl font-bold ${light ? 'text-white' : 'text-foreground'}`}>BRANDS</span>
+      {inner}
     </motion.div>
   );
 }
