@@ -1,6 +1,7 @@
 import { askFaqs } from '@/lib/askFaqs';
+import { canonical } from '@/lib/seo';
 
-const pageUrl = 'https://gsgbrands.com.gh/ask-gsg-brands';
+const pageUrl = canonical('/ask-gsg-brands');
 
 export default function AskStructuredData() {
   const payload = {

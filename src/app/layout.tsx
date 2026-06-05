@@ -6,35 +6,44 @@ import MainHeader from '@/components/MainHeader';
 import Footer from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import StructuredData from '@/components/StructuredData';
+import { SITE_URL, SITE_NAME, SITE_TAGLINE } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const site = 'https://gsgbrands.com.gh';
+const site = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: 'GSG Brands Ghana — Time & money saver for everyday value',
-    template: '%s | GSG Brands Ghana',
+    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    template: `%s | ${SITE_NAME}`,
   },
-  applicationName: 'GSG Brands Ghana',
+  applicationName: SITE_NAME,
   description:
-    'GSG Brands Ghana connects convenience shopping, personal shopping, Sell-Safe marketplace, StreetCuisine, courier delivery and support across Ghana.',
+    'GSG Brands Ghana is an all-in-one services ecosystem in Ghana — convenience goods delivery, personal shopper, Sell-Safe Buy-Safe escrow marketplace, StreetCuisine food delivery, nationwide courier, and customer support. Save time and money in Accra, Kumasi, Takoradi and beyond.',
   keywords: [
     'GSG Brands',
     'GSG Brands Ghana',
-    'Ghana',
-    'Accra',
-    'convenience goods',
-    'personal shopper',
-    'marketplace Ghana',
-    'courier Ghana',
+    'GSG Brands Ghana Limited',
+    'online shopping Ghana',
+    'grocery delivery Accra',
+    'convenience goods Ghana',
+    'personal shopper Ghana',
+    'Makola market shopping',
+    'Sell-Safe Buy-Safe',
+    'escrow payment Ghana',
+    'secure online marketplace Ghana',
     'StreetCuisine',
-    'mobile money',
+    'Ghanaian food delivery',
+    'courier service Ghana',
+    'parcel delivery Accra',
+    'package tracking Ghana',
+    'mobile money payment',
+    'GSG affiliates',
   ],
-  authors: [{ name: 'GSG Brands Ghana', url: site }],
-  creator: 'GSG Brands Ghana',
-  publisher: 'GSG Brands Ghana',
+  authors: [{ name: SITE_NAME, url: site }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -46,10 +55,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GH',
     url: site,
-    siteName: 'GSG Brands Ghana',
-    title: 'GSG Brands Ghana — Time & money saver for everyday value',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description:
-      'Your hub for convenience goods, personal shopping, marketplace trust, food, courier and customer support in Ghana.',
+      'Your hub for convenience goods, personal shopping, the Sell-Safe Buy-Safe marketplace, StreetCuisine, courier delivery and customer support across Ghana.',
     images: [
       {
         url: '/opengraph-image',
@@ -61,7 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GSG Brands Ghana — Time & money saver for everyday value',
+    site: '@gsgbrandsgh',
+    creator: '@gsgbrandsgh',
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description:
       'Convenience shopping, personal shopper, marketplace, StreetCuisine & courier — built for Ghana.',
     images: ['/twitter-image'],
@@ -80,6 +91,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: site,
   },
+  // Google Search Console verification.
+  // Set GOOGLE_SITE_VERIFICATION in your Vercel env (Project → Settings →
+  // Environment Variables) to the token from GSC's "HTML tag" method, or
+  // verify via DNS/HTML-file instead and leave this unset.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   manifest: '/manifest.webmanifest',
 };
 

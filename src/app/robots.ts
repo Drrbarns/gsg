@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/seo';
 
-const host = 'https://gsgbrands.com.gh';
+const host = SITE_URL;
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import AskStructuredData from './AskStructuredData';
+import { pageMetadata } from '@/lib/seo';
 
-const canonical = 'https://gsgbrands.com.gh/ask-gsg-brands';
-
-export const metadata: Metadata = {
-  title: 'Ask GSG Brands — FAQs & contact',
+export const metadata: Metadata = pageMetadata({
+  title: 'Ask GSG Brands — FAQs & Contact',
   description:
-    'Answers about GSG services, delivery, payments, Sell-Safe Buy-Safe, Personal Shopper, and courier. Still stuck? Submit a question for the team.',
+    'Answers about GSG Brands Ghana services, delivery areas, payments, Sell-Safe Buy-Safe, Personal Shopper and courier. Still stuck? Submit a question and our team will respond.',
+  path: '/ask-gsg-brands',
   keywords: [
+    'GSG Brands FAQ',
     'GSG Brands help',
     'GSG Ghana support',
     'GSG delivery areas',
@@ -15,32 +16,7 @@ export const metadata: Metadata = {
     'personal shopper Ghana',
     'GSG affiliate',
   ],
-  alternates: { canonical },
-  openGraph: {
-    title: 'Ask GSG Brands — FAQs & contact',
-    description:
-      'Browse common answers about our ecosystem, or send a question. Chat, phone, and email supported.',
-    url: canonical,
-    type: 'website',
-    locale: 'en_GH',
-    siteName: 'GSG Brands Ghana',
-    images: [
-      {
-        url: 'https://gsgbrands.com.gh/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: 'GSG Brands — Ask us anything',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Ask GSG Brands',
-    description: 'FAQs and a direct line to our team — Ghana.',
-    images: ['https://gsgbrands.com.gh/opengraph-image'],
-  },
-  robots: { index: true, follow: true },
-};
+});
 
 export default function AskGsgBrandsLayout({ children }: { children: React.ReactNode }) {
   return (
